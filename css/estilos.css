@@ -298,5 +298,14 @@ textarea {
 }
 
 .robo {
+    /* display: none; */
+}
+
+.daño {
     display: none;
+}
+
+.icon {
+    display: flex;
+    justify-content: flex-end;
 }
