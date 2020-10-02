@@ -1,4 +1,5 @@
 $(function() {
 
-    console.log('funciona bien ');
+    var funciona = 'funciona HPTA';
+    alert(funciona);
 });
