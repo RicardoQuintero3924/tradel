@@ -1,0 +1,302 @@
+:root {
+    --fuente: font-family: 'Noto Sans JP', sans-serif;
+    --color: #C5C7CB;
+    --letra: #545455;
+    --correo: familia de fuentes: 'Arenas movedizas', sans-serif;
+    --colorCorreo: #2F2E2E;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+
+/**PRINCIPALES*/
+
+body {
+    background-color: #E3E2E2;
+}
+
+h1 {
+    font-family: var(--fuente);
+    text-transform: uppercase;
+    color: var(--letra);
+    text-shadow: 0 0 3px black;
+}
+
+.boton {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-weight: 1.2rem;
+    text-transform: uppercase;
+    font-family: var(--fuente);
+    color: var(--letra);
+    background-color: var(--color);
+}
+
+.boton:hover {
+    background-color: var(--letra);
+    color: var(--color);
+    cursor: pointer;
+}
+
+
+/**HEADER*/
+
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.barra {
+    background-color: var(--color);
+    width: 100%;
+    height: 100px;
+    border: 1px solid var(--letra);
+    padding-bottom: 10px;
+}
+
+.barra h1 {
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+
+/** NAVEGACION */
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--fuente);
+    font-size: 1.8rem;
+}
+
+.menu a {
+    text-decoration: none;
+    color: var(--letra);
+    z-index: 2;
+}
+
+nav.menu a:hover {
+    background-color: var(--color);
+    border-bottom: 1px solid var(--letra);
+}
+
+
+/** IMAGEN TRADEL*/
+
+.seccion-imagen {
+    /* border: 2px solid var(--letra); */
+}
+
+.seccion-imagen img {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 90px;
+    max-width: 100%;
+    border: 2px solid var(--letra);
+    padding: 30px;
+    border-radius: 5px;
+}
+
+
+/**FOOTER*/
+
+.footer {
+    background-color: var(--color);
+    padding: 20px;
+    border: 2px solid var(--letra);
+}
+
+.footer p {
+    text-align: center;
+    font-family: var(--fuente);
+    font-size: 1.4rem;
+    color: var(--letra);
+    text-transform: uppercase;
+    text-shadow: 0 0 2px black;
+}
+
+
+/**INTERNAS*/
+
+
+/** EQUIPOS*/
+
+
+/**iconos equipos**/
+
+.icono a,
+i {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 18px;
+    color: var(--letra);
+    font-size: 2rem;
+}
+
+.icono a,
+i:hover {
+    cursor: pointer;
+    color: white;
+    -webkit-transform: scale(1.1);
+}
+
+
+/**formulario**/
+
+.seccion-equipo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid var(--letra);
+    height: 650px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.seccion-equipo legend {
+    font-family: var(--fuente);
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    color: var(--letra);
+    text-shadow: 0 0 2px black;
+}
+
+.seccion-equipo label {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-family: var(--fuente);
+    color: var(--letra);
+    margin-top: 15px;
+}
+
+.seccion-equipo select,
+input:not([type="submit"]) {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background-color: var(--color);
+    font-family: var(--fuente);
+    color: var(--letra);
+    border: 1px solid var(--letra);
+}
+
+.aplicaciones {
+    max-width: 30rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.ehs {
+    width: auto;
+    margin-top: 15px;
+    margin-right: 40px;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.estado {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.estado input:not([type="submit"]) {
+    width: auto;
+    margin-top: 15px;
+    margin-right: 40px;
+    margin-left: 10px;
+    align-items: center;
+}
+
+textarea {
+    width: 100%;
+    height: 9rem;
+    background-color: var(--color);
+    font-family: var(--fuente);
+    color: var(--letra);
+}
+
+
+/**INFORMACION SOPORTE**/
+
+.brand {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+}
+
+.tarjet {
+    flex-basis: calc(50% - 1rem);
+    text-align: center;
+}
+
+.tarjet h3 {
+    font-family: var(--fuente);
+    font-size: 3rem;
+    font-weight: 700;
+    border-bottom: 1px solid var(--letra);
+    margin-bottom: 0;
+    color: var(--letra);
+    text-shadow: 0 0 3px var(--letra);
+    text-transform: uppercase;
+}
+
+.tarjet p span {
+    text-transform: uppercase;
+    font-family: var(--fuente);
+    font-weight: bold;
+    color: var(--letra);
+}
+
+.tarjet p {
+    font-family: var(--correo);
+    font-weight: bold;
+    color: var(--colorCorreo);
+    text-transform: uppercase;
+}
+
+
+/**Reporte Sura**/
+
+.title {
+    font-family: var(--fuente);
+    color: var(--letra);
+    text-transform: uppercase;
+    text-shadow: 0 0 3px var(--letra);
+}
+
+.title .select a {
+    align-items: center;
+    margin-right: 2rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: var(--fuente);
+    font-weight: bold;
+    color: var(--letra);
+}
+
+.title .select a:hover {
+    color: white;
+    border-bottom: 2px solid #686868;
+}
+
+.robo {
+    display: none;
+}
