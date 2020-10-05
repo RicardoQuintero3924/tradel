@@ -20,37 +20,57 @@
             </div>
         </div>
     </header>
-    <div class="title contenedor">
-        <h2>Reporte Sura</h2>
-        <div class="select">
-            <a href="robo">Robo</a>
-            <a href="daño">Daño</a>
+    <div class="evento">
+        <div class="title contenedor">
+            <h2>Reporte Sura</h2>
+            <!-- <div class="select ">
+                <a href="#robo">Robo</a>
+                <a href="#daño">Daño</a>
+            </div> -->
+            <div class="icon contenedor">
+                <a href="siniestro.html"><i class="far fa-hand-point-left"></i></a>
+                <a href="#"><i class="fas fa-search"></i></a>
+            </div>
         </div>
-        <div class="icon contenedor">
-            <a href="siniestro.html"><i class="far fa-hand-point-left"></i></a>
-            <a href="#"><i class="fas fa-search"></i></a>
-        </div>
+
+        <fieldset id="robo" class="contenedor seccion-equipo info  clearflix">
+            <legend>Robo</legend>
+            <label for="nReporte">Numero Reporte SURA:</label>
+            <input type="text" id="nReporte" value="" name="nReporte" placeholder="Numero Reporte SURA...">
+            <label for="cobro">Cobrado A:</label>
+            <input type="text" id="cobro" name="cobro" placeholder="Cobrado A...">
+            <label for="pSura">Pagado Por SURA:</label>
+            <input type="text" id="pSura" name="pSura" placeholder="Papagado Por Sura...">
+            <label for="denuncia">Denuncia:</label>
+            <input type="text" id="denuncia" name="denuncia" placeholder="Número Denuncia...">
+            <label for="observaciones">Observaciones</label>
+            <textarea name="observaciones" id="observaciones"></textarea>
+            <div class="contenedor">
+                <input type="submit" class="boton">
+            </div>
+
+        </fieldset>
+
+        <fieldset id="daño" class="contenedor seccion-equipo info  clearfix">
+            <legend>daño</legend>
+            <label for="cReparacion">Costo Reparacion:</label>
+            <input type="text" id="cReparacios" name="cReparacion" value="" placeholder="Costo Reparacion...">
+            <label for="rSura">Reporte Sura:</label>
+            <input type="text" id="rSura" name="rSura" value="" placeholder="Reporte Sura...">
+            <label for="cobrado">Cobrado A:</label>
+            <input type="text" id="cobrado" name="cobrado" value="" placeholder="Cobrado a...">
+            <label for="cMantenimiento">Numero Caso Mantenimiento:</label>
+            <input type="text" id="cMantenimiento" name="cMantenimiento" value="" placeholder="Numero Caso Mantenimiento...">
+            <label for="observaciones">Observaciones</label>
+            <textarea name="observaciones" id="observaciones"></textarea>
+            <div class="contenedor">
+                <input type="submit" class="boton">
+            </div>
+
+        </fieldset>
+
+
     </div>
-
-    <fieldset class="contenedor seccion-equipo robo">
-        <legend>Robo</legend>
-
-
-    </fieldset>
-    <fieldset class="contenedor seccion-equipo daño">
-        <legend>daño</legend>
-        <label for="cReparacion">Costo Reparacion:</label>
-        <input type="text" id="cReparacios" name="cReparacion" value="" placeholder="Costo Reparacion...">
-        <label for="rSura">Reporte Sura:</label>
-        <input type="text" id="rSura" name="rSura" value="" placeholder="Reporte Sura...">
-        <label for="cobrado">Cobrado A:</label>
-        <input type="text" id="cobrado" name="cobrado" value="" placeholder="Cobrado a...">
-        <label for="cMantenimiento">Numero Caso Mantenimiento:</label>
-        <input type="text" id="cMantenimiento" name="cMantenimiento" value="" placeholder="Numero Caso Mantenimiento...">
-
-
-    </fieldset>
-
     <footer class="contenedor">
         <div class="footer">
             <p class="copyright">Todos los Derechos Reservados &copy; </p>

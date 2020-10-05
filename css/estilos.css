@@ -50,6 +50,16 @@ h1 {
     cursor: pointer;
 }
 
+.clearfix::before,
+.clearfix::after {
+    content: " ";
+    display: table;
+}
+
+.clearfix::after {
+    clear: both;
+}
+
 
 /**HEADER*/
 
@@ -275,6 +285,10 @@ textarea {
 
 /**Reporte Sura**/
 
+.ocultar {
+    display: none;
+}
+
 .title {
     font-family: var(--fuente);
     color: var(--letra);
@@ -283,6 +297,7 @@ textarea {
 }
 
 .title .select a {
+    display: block;
     align-items: center;
     margin-right: 2rem;
     text-transform: uppercase;
@@ -290,22 +305,28 @@ textarea {
     font-family: var(--fuente);
     font-weight: bold;
     color: var(--letra);
+    position: relative;
 }
+
+
+/* .title .select a.activo::after {
+    position: absolute;
+    display: block;
+} */
 
 .title .select a:hover {
     color: white;
     border-bottom: 2px solid #686868;
 }
 
-.robo {
-    /* display: none; */
-}
-
-.daño {
-    display: none;
-}
-
 .icon {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
+}
+
+
+/** Vista Impresora**/
+
+.print {
+    height: 35rem;
 }
