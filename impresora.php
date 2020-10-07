@@ -16,32 +16,31 @@
     <header class="contenedor">
         <div class="barra contenedor">
             <div class="titulo">
-                <h1>control de celularess</h1>
+                <h1>control de Equipos</h1>
             </div>
         </div>
         <div class="icon contenedor">
-            <a href="equipos.html"><i class="far fa-hand-point-left"></i></a>
+            <a href="equipos.php"><i class="far fa-hand-point-left"></i></a>
             <a href="#"><i class="fas fa-search"></i></a>
         </div>
-        <fieldset class="seccion-equipo">
-            <legend>Asignación Equipos</legend>
-            <label for="nComodato">Número Comodato:</label>
-            <input type="text" id="nComodato" placeholder="Número Comodato...">
-            <label for="imei">Imei equipo:</label>
-            <input type="text" id="imei" placeholder="IMEI Equipo...">
-            <label for="serial">serial impresora:</label>
-            <input type="text" id="serial" name="serial" placeholder="Serial Impresora...">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Nombre Responsable...">
-            <label for="ruta">Ruta:</label>
-            <input type="text" id="ruta" placeholder="Numero Ruta...">
+        <fieldset class="seccion-equipo print">
+            <legend>Impresoras</legend>
+            <label for="tImpresora">Tipo Impresora:</label>
+            <select name="tImpresora" id="tImpresora">
+                <option value="" disabled selected>Seleccione</option>
+                <option value="ZQ110">ZQ110</option>
+                <option value="WOOSIM">WOOSIM</option>
+                <option value="MZ220">MZ220</option>
+            </select>
+            <label for="serial">serial:</label>
+            <input type="text" id="serial" name="serial" placeholder="Serial...">
+            <label for="estado">Estado:</label>
+            <input type="text" id="estado" name="estado" placeholder="Estado...">
             <label for="observacones">observaciones:</label>
             <textarea name="observaciones" id="observaciones"></textarea>
-
-
+            <input type="submit" class="boton">
 
         </fieldset>
-        <input type="submit" class="boton">
         <footer class="contenedor">
             <div class="footer">
                 <p class="copyright">Todos los Derechos Reservados &copy; </p>

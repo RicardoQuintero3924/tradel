@@ -16,26 +16,25 @@
     <header class="contenedor">
         <div class="barra contenedor">
             <div class="titulo">
-                <h1>control de Equipos</h1>
+                <h1>control de celularess</h1>
             </div>
         </div>
         <div class="icon contenedor">
-            <a href="equipos.html"><i class="far fa-hand-point-left"></i></a>
-            <a href="https://drive.google.com/file/d/1ICBHxSvk76mJXAR6f1e_f5EGp7-AfNzY/view?usp=sharing"><i class="fab fa-google-drive"></i></a>
+            <a href="equipos.php"><i class="far fa-hand-point-left"></i></a>
             <a href="#"><i class="fas fa-search"></i></a>
         </div>
         <fieldset class="seccion-equipo">
-            <legend>comodato</legend>
+            <legend>Asignación Equipos</legend>
             <label for="nComodato">Número Comodato:</label>
             <input type="text" id="nComodato" placeholder="Número Comodato...">
             <label for="imei">Imei equipo:</label>
             <input type="text" id="imei" placeholder="IMEI Equipo...">
             <label for="serial">serial impresora:</label>
             <input type="text" id="serial" name="serial" placeholder="Serial Impresora...">
-            <label for="estado">Estado:</label>
-            <input type="text" id="estado" name="estado" placeholder="Estado...">
-            <label for="vigencia">Vigencia:</label>
-            <input type="text" id="vigencia" placeholder="Vigencia Comodato DD/MM/AAAA">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre Responsable...">
+            <label for="ruta">Ruta:</label>
+            <input type="text" id="ruta" placeholder="Numero Ruta...">
             <label for="observacones">observaciones:</label>
             <textarea name="observaciones" id="observaciones"></textarea>
 

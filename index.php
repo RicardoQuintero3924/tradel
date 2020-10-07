@@ -18,10 +18,10 @@
                 <h1>control de Equipos</h1>
             </div>
             <nav class="menu">
-                <a href="equipos.html">Equipos</a>
-                <a href="mantenimiento.html">Mantenimiento</a>
-                <a href="siniestro.html">Siniestros</a>
-                <a href="info_soporte.html">Info-Soporte</a>
+                <a href="equipos.php">Equipos</a>
+                <a href="mantenimiento.php">Mantenimiento</a>
+                <a href="siniestro.php">Siniestros</a>
+                <a href="info_soporte.php">Info-Soporte</a>
             </nav>
         </div>
     </header>

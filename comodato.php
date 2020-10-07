@@ -20,27 +20,29 @@
             </div>
         </div>
         <div class="icon contenedor">
-            <a href="equipos.html"><i class="far fa-hand-point-left"></i></a>
+            <a href="equipos.php"><i class="far fa-hand-point-left"></i></a>
+            <a href="https://drive.google.com/file/d/1ICBHxSvk76mJXAR6f1e_f5EGp7-AfNzY/view?usp=sharing"><i class="fab fa-google-drive"></i></a>
             <a href="#"><i class="fas fa-search"></i></a>
         </div>
-        <fieldset class="seccion-equipo print">
-            <legend>Impresoras</legend>
-            <label for="tImpresora">Tipo Impresora:</label>
-            <select name="tImpresora" id="tImpresora">
-                <option value="" disabled selected>Seleccione</option>
-                <option value="ZQ110">ZQ110</option>
-                <option value="WOOSIM">WOOSIM</option>
-                <option value="MZ220">MZ220</option>
-            </select>
-            <label for="serial">serial:</label>
-            <input type="text" id="serial" name="serial" placeholder="Serial...">
+        <fieldset class="seccion-equipo">
+            <legend>comodato</legend>
+            <label for="nComodato">Número Comodato:</label>
+            <input type="text" id="nComodato" placeholder="Número Comodato...">
+            <label for="imei">Imei equipo:</label>
+            <input type="text" id="imei" placeholder="IMEI Equipo...">
+            <label for="serial">serial impresora:</label>
+            <input type="text" id="serial" name="serial" placeholder="Serial Impresora...">
             <label for="estado">Estado:</label>
             <input type="text" id="estado" name="estado" placeholder="Estado...">
+            <label for="vigencia">Vigencia:</label>
+            <input type="text" id="vigencia" placeholder="Vigencia Comodato DD/MM/AAAA">
             <label for="observacones">observaciones:</label>
             <textarea name="observaciones" id="observaciones"></textarea>
-            <input type="submit" class="boton">
+
+
 
         </fieldset>
+        <input type="submit" class="boton">
         <footer class="contenedor">
             <div class="footer">
                 <p class="copyright">Todos los Derechos Reservados &copy; </p>
