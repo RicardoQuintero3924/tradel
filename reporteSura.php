@@ -28,7 +28,7 @@
                 <a href="#daño">Daño</a>
             </div> -->
             <div class="icon contenedor">
-                <a href="siniestro.html"><i class="far fa-hand-point-left"></i></a>
+                <a href="siniestro.php"><i class="far fa-hand-point-left"></i></a>
                 <a href="#"><i class="fas fa-search"></i></a>
             </div>
         </div>

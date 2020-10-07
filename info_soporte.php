@@ -19,7 +19,7 @@
         </div>
     </header>
     <nav class="icono contenedor">
-        <a href="index.html"><i class="far fa-hand-point-left"></i></a>
+        <a href="index.php"><i class="far fa-hand-point-left"></i></a>
     </nav>
     <fieldset class="contenedor seccion-equipo">
         <legend>Informacion Soporte</legend>
