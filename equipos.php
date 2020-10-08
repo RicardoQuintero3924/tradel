@@ -19,7 +19,7 @@
         </div>
     </header>
     <nav class="icono contenedor">
-        <a href="index.php"><i class="far fa-hand-point-left"></i></a>
+        <a href="paginaPrincipal.php"><i class="far fa-hand-point-left"></i></a>
         <a href="impresora.php"><i class="fas fa-print"></i></a>
         <a href="asignacion.php"><i class="fas fa-address-book"></i></a>
         <a href="#"><i class="fas fa-pencil-alt"></i></a>

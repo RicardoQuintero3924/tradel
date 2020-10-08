@@ -11,33 +11,20 @@
 </head>
 
 <body>
+    <form action="" class="login">
+        <div class="credenciales">
+            <h1>TRADEL</h1>
+            <h2>Login:</h2>
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" name="usuario" placeholder="Ingrese su Usuario">
 
-    <header class="contenedor">
-        <div class="barra contenedor">
-            <div class="titulo">
-                <h1>control de Equipos</h1>
-            </div>
-            <nav class="menu">
-                <a href="equipos.php">Equipos</a>
-                <a href="mantenimiento.php">Mantenimiento</a>
-                <a href="siniestro.php">Siniestros</a>
-                <a href="info_soporte.php">Info-Soporte</a>
-            </nav>
-        </div>
-    </header>
+            <label for="clave">Contraseña:</label>
+            <input type="password" id="clave" name="clave" placeholder="Ingrese su Contraseña">
 
+            <input type="submit" value="enviar" class="btn">
+        </div>
+    </form>
 
-    <div class="seccion-media contenedor">
-        <div class="seccion-imagen">
-            <img src="images/tradel-900.jpg">
-        </div>
-    </div>
-    <footer class="contenedor">
-        <div class="footer">
-            <p class="copyright">Todos los Derechos Reservados &copy; </p>
-        </div>
-    </footer>
-    <script src="jquery-1.12.0.min.js"></script>
 </body>
 
 </html>

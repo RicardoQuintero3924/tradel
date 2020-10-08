@@ -19,7 +19,7 @@
         </div>
     </header>
     <nav class="icono contenedor">
-        <a href="index.php"><i class="far fa-hand-point-left"></i></a>
+        <a href="paginaPrincipal.php"><i class="far fa-hand-point-left"></i></a>
         <a href="reporteSura.php"><i class="fas fa-book"></i></a>
         <a href="#"><i class="fas fa-search"></i></a>
     </nav>
