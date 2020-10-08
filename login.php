@@ -6,29 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/estilos.css">
-    <title>TRADEL LOGIN</title>
+    <link rel="stylesheet" href="js/main.js">
+    <title>Zebra Tradel</title>
 </head>
 
 <body>
+    <form action="" class="login">
+        <div class="credenciales">
+            <h1>TRADEL</h1>
+            <h2>Login:</h2>
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" name="usuario" placeholder="Ingrese su Usuario">
 
+            <label for="clave">Contraseña:</label>
+            <input type="password" id="clave" name="clave" placeholder="Ingrese su Contraseña">
 
-
-    <header class="contenedor">
-
-
-        <form action="" class="login">
-            <div class="credenciales">
-                <h2>Login:</h2>
-                <label for="usuario">Usuario:</label>
-                <input type="text" id="usuario" name="usuario" placeholder="Ingrese su Usuario">
-
-                <label for="clave">Contraseña:</label>
-                <input type="password" id="clave" name="clave" placeholder="Ingrese su Contraseña">
-
-                <input type="submit" value="enviar" class="btn">
-            </div>
-        </form>
-    </header>
+            <input type="submit" value="enviar" class="btn">
+        </div>
+    </form>
 
 </body>
 
