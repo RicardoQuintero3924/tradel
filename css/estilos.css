@@ -171,8 +171,8 @@ i:hover {
     margin-bottom: 10px;
     border: 2px solid var(--letra);
     height: 650px;
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
 }
 
 .seccion-equipo legend {
@@ -188,7 +188,7 @@ i:hover {
     font-weight: 400;
     font-family: var(--fuente);
     color: var(--letra);
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .seccion-equipo select,
@@ -196,6 +196,7 @@ input:not([type="submit"]) {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
+    margin-bottom: 10px;
     background-color: var(--color);
     font-family: var(--fuente);
     color: var(--letra);
@@ -366,4 +367,8 @@ textarea {
 .btn:hover {
     cursor: pointer;
     color: white;
+}
+
+.error {
+    text-transform: uppercase;
 }

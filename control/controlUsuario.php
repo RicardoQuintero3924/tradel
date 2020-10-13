@@ -26,4 +26,16 @@ class controlUsuario{
       return $usuarios;
   }
 
+  public function buscarPorUsuario($user){
+      try{
+        $sql = 'Select * from usuario Where usuario= ? ';
+        $prep = $this->cnx->prepare($sql);
+        $prep->execute([$user]);
+        $usuarios = $prep->fetchAll(PDO::FETCH_OBJ);
+      }
+      catch(PDOException $ex){
+          die($ex->getMessage());
+      }
+      return $usuarios;
+  }
 }
