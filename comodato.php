@@ -1,3 +1,12 @@
+<?php
+$errores = '';
+
+if(isset($_POST['enviar'])){
+    
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -27,22 +36,19 @@
         <fieldset class="seccion-equipo">
             <legend>comodato</legend>
             <label for="nComodato">Número Comodato:</label>
-            <input type="text" id="nComodato" placeholder="Número Comodato...">
+            <input type="text" id="nComodato" name="nComodato" placeholder="Número Comodato...">
             <label for="imei">Imei equipo:</label>
-            <input type="text" id="imei" placeholder="IMEI Equipo...">
+            <input type="text" id="imei" name="imei" placeholder="IMEI Equipo...">
             <label for="serial">serial impresora:</label>
             <input type="text" id="serial" name="serial" placeholder="Serial Impresora...">
             <label for="estado">Estado:</label>
             <input type="text" id="estado" name="estado" placeholder="Estado...">
             <label for="vigencia">Vigencia:</label>
-            <input type="text" id="vigencia" placeholder="Vigencia Comodato DD/MM/AAAA">
+            <input type="text" id="vigencia" name="vigencia" placeholder="Vigencia Comodato DD/MM/AAAA">
             <label for="observacones">observaciones:</label>
             <textarea name="observaciones" id="observaciones"></textarea>
-
-
-
         </fieldset>
-        <input type="submit" class="boton">
+        <input type="submit" value="enviar" name="enviar" class="boton">
         <footer class="contenedor">
             <div class="footer">
                 <p class="copyright">Todos los Derechos Reservados &copy; </p>
