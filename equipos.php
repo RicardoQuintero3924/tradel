@@ -1,3 +1,65 @@
+<?php
+$errores = "";
+
+if(isset($_POST['enviar'])){
+    $tp = $_POST['tp'];
+    $imei = $_POST['imei'];
+    $serial = $_POST['serial'];
+    $sim = $_POST['sim'];
+    $ciudad = $_POST['ciudad'];
+    $ehs = (isset($_POST['ehs'])) ? : 'false';
+    $celuweb = (isset($_POST['celuweb'])) ? : 'false';
+    $disponible = (isset($_POST['disponible'])) ? : 'false';
+    $cargador = (isset($_POST['cargador'])) ? : 'false';
+    $comodato = (isset($_POST['comodato'])) ? : 'false';
+    $impresora = (isset($_POST['impresora']))? : 'false';
+
+    //validando tipo de equipo
+    if($tp == ''){
+        $errores .= 'Debe Seleccionar al menos un tipo de equipo!';
+    }
+    //validando el imei
+    if(!empty($imei)){
+        $imei = trim($imei);
+        $imei = filter_var($imei, FILTER_SANITIZE_STRING);
+    }else{
+        $errores .= 'Debe Ingresar el IMEI del equipo';
+    }
+    //validando el serial
+    if(!empty($serial)){
+        $serial = trim($serial);
+        $serial = filter_var($serial, FILTER_SANITIZE_STRING);
+    }else{
+        $errores .= 'Debe Ingresar el Serial del Equipo';
+    }
+    //validando sim
+    if(!empty($sim)){
+        $sim = trim($sim);
+        $sim = filter_var($sim, FILTER_SANITIZE_STRING);
+
+    }else{
+        $errores .= 'Debe Ingresar el numero de SIM';
+    }
+    //validando ciudad
+    if(!empty($ciudad)){
+        $ciudad = trim($ciudad);
+        $ciudad = filter_var($ciudad, FILTER_SANITIZE_STRING);
+    }else{
+        $errores .= 'Debe Ingresar una Ciudad';
+    }
+     
+    if(!$errores){
+        require_once 'modelo/equipo.php';
+        require_once 'control/controlEquipo.php'; 
+        $equipo = new Equipo($tp, $imei, $serial, $sim, $ciudad, $ehs, $celuweb, $disponible, $cargador, $comodato, $impresora);
+        $equipoControl = new controlEquipo();
+        $equipoControl->registroEquipo($equipo);
+        echo '<script type="text/javascript">alert("Equipo Registrado con Exito!")</script>';
+    }
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -26,24 +88,25 @@
         <a href="comodato.php"><i class="far fa-file-alt"></i></a>
         <a href="#"><i class="fas fa-search"></i></a>
     </nav>
-    <form action="equipo" class="contenedor">
+    
+    <form method="POST" class="contenedor">
 
         <fieldset class="contenedor seccion-equipo">
             <legend>Equipos</legend>
             <label for="Tp">Tipo Equipo:</label>
             <select name="tp" id="tp">
                 <option value="" disabled selected>-- Seleccione --</option>
-                <option value="tc25">TC25</option>
-                <option value="zq110">ZQ110</option>
+                <option value="TC25">TC25</option>
+                <option value="ZQ110">ZQ110</option>
             </select>
             <label for="imei">IMEI:</label>
-            <input type="text" id="imei" placeholder="IMEI EQUIPO...">
+            <input type="text" id="imei" name="imei" placeholder="IMEI EQUIPO...">
             <label for="serial">serial:</label>
-            <input type="text" id="serial" placeholder="SERIAL EQUIPO..">
+            <input type="text" id="serial" name="serial" placeholder="SERIAL EQUIPO..">
             <label for="sim">Numero Sim:</label>
-            <input type="text" id="sim" placeholder="NUMERO SIM...">
+            <input type="text" id="sim" name="sim" placeholder="NUMERO SIM...">
             <label for="ciudad">CIUDAD:</label>
-            <input type="text" id="ciudad" placeholder="CIUDAD...">
+            <input type="text" id="ciudad" name="ciudad" placeholder="CIUDAD...">
             <label for="aplicaciones">Aplicaciones Instaladas:</label>
             <div class="aplicaciones">
                 <label for="ehs">ehs:</label><input type="radio" id="ehs" value="ehs" name="ehs" class="ehs">
@@ -51,14 +114,19 @@
             </div>
             <label for="estado">Estado:</label>
             <div class="estado">
-                <label for="disponible">Disponible:</label><input type="radio" id="disponible" value="" name="disponible">
-                <label for="cargador">Cargador:</label><input type="radio" id="cargador" value="" name="cargador">
-                <label for="comodato">Comodato:</label><input type="radio" id="comodato" value="" name="comodato">
-                <label for="comodato">Impresora:</label><input type="radio" id="impresora" value="" name="impresora">
+                <label for="disponible">Disponible:</label><input type="radio" id="disponible" value="disponible" name="disponible">
+                <label for="cargador">Cargador:</label><input type="radio" id="cargador" value="cargador" name="cargador">
+                <label for="comodato">Comodato:</label><input type="radio" id="comodato" value="comodato" name="comodato">
+                <label for="comodato">Impresora:</label><input type="radio" id="impresora" value="impresora" name="impresora">
             </div>
 
         </fieldset>
-        <input type="submit" value="enviar" class="boton">
+        <input type="submit" value="enviar" name="enviar" class="boton">
+        <div class="errores">
+            <pre>
+                <p><? $errores ?></p>
+            </pre>
+        </div>
     </form>
     <footer class="contenedor">
         <div class="footer">
