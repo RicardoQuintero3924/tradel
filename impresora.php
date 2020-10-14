@@ -1,3 +1,51 @@
+<?php
+    $errores = '';
+    if(isset($_POST['enviar'])){
+        $tImpresora = $_POST['tImpresora'];
+        $serial = $_POST['serial'];
+        $estado = $_POST['estado'];
+        $observaciones = $_POST['observaciones'];
+        
+        //validando tipo impresora
+        if($tImpresora == ""){
+            $errores .= 'Debe Seleccionar Un Tipo de Impresora';
+        }
+        //validando serial
+        if(!empty($serial)){
+            $serial = trim($serial);
+            $serial = filter_var($serial, FILTER_SANITIZE_STRING);
+        }else{
+            $errores .= 'Debe Ingresar el Serial';
+        }
+        //validando estado
+        if(!empty($estado)){
+            $estado = trim($estado);
+            $estado = filter_var($estado, FILTER_SANITIZE_STRING);
+        }else{
+            $errores .= 'Ingrese El Estado Del Equipo';
+        }
+        //validando Observaciones
+        if(!empty($observaciones)){
+            $observaciones = trim($observaciones);
+            $observaciones = filter_var($observaciones, FILTER_SANITIZE_STRING);
+        }else{
+            $errores .= 'Ingrese observaciones del equipo';
+        }
+
+        
+        if(!$errores){
+            require_once 'modelo/mImpresora.php';
+            require_once 'control/controlImpresora.php';
+
+            $impresora = new impresora($tImpresora, $serial, $estado, $observaciones);
+            $impresoraControl = new controlImpresora();
+            $impresoraControl->registroImpresora($impresora);
+            echo '<script type="text/javascript"> alert("Registro Generado con Exito") </script>';
+        }
+
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,10 +71,11 @@
             <a href="equipos.php"><i class="far fa-hand-point-left"></i></a>
             <a href="#"><i class="fas fa-search"></i></a>
         </div>
+        <form method="post">
         <fieldset class="seccion-equipo print">
             <legend>Impresoras</legend>
             <label for="tImpresora">Tipo Impresora:</label>
-            <select name="tImpresora" id="tImpresora">
+            <select name="tImpresora" id="tImpresora" >
                 <option value="" disabled selected>Seleccione</option>
                 <option value="ZQ110">ZQ110</option>
                 <option value="WOOSIM">WOOSIM</option>
@@ -38,9 +87,10 @@
             <input type="text" id="estado" name="estado" placeholder="Estado...">
             <label for="observacones">observaciones:</label>
             <textarea name="observaciones" id="observaciones"></textarea>
-            <input type="submit" class="boton">
+            <input type="submit" value="enviar" name="enviar" class="boton">
 
         </fieldset>
+        </form>
         <footer class="contenedor">
             <div class="footer">
                 <p class="copyright">Todos los Derechos Reservados &copy; </p>

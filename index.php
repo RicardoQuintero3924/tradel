@@ -34,7 +34,7 @@ if (isset($_POST['btn_login'])) {
     if (($clave === $password)) {
         header('location:paginaPrincipal.php');
     } else {
-       echo 'Ingrese Su Contraseña Correctamente';
+       echo '<script type="text/javascript"> alert("Ingrese Su Contraseña Correcta")</script>';
     }
 }
 
