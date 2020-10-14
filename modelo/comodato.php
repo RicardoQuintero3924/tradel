@@ -12,6 +12,7 @@ class comodato{
         $this->nComodato = $nComodato;
         $this->imeiEquipo = $imeiEquipo;
         $this->serialImpresora = $serialImpresora;
+        $this->estado = $estado;
         $this->vigencia = $vigencia;
         $this->observaciones = $observaciones;
     }
