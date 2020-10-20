@@ -15,7 +15,7 @@ class controlEquipo{
     }
     public function registroEquipo($equipo){
        try{
-        $sql= 'Insert into equipo (t_equipo, imei, serial, nro_sim, ciudad, ehs, celuweb, disponible, cargador, comodato, impresora) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $sql= 'Insert into equipo (t_equipo, imei, serial, nro_sim, ciudad, ehs, celuweb, disponible, cargador, comodato, backup) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $prep = $this->cnx->prepare($sql);
         $prep->execute([
             $equipo->GetTEquipo(),
@@ -28,7 +28,7 @@ class controlEquipo{
             $equipo->GetDisponible(),
             $equipo->GetCargador(),
             $equipo->GetComodato(),
-            $equipo->GetImpresora()
+            $equipo->GetBackup()
         ]);
        }
        catch(PDOException $ex){

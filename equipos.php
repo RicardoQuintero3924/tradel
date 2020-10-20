@@ -12,7 +12,7 @@ if(isset($_POST['enviar'])){
     $disponible = (isset($_POST['disponible'])) ? : 'false';
     $cargador = (isset($_POST['cargador'])) ? : 'false';
     $comodato = (isset($_POST['comodato'])) ? : 'false';
-    $impresora = (isset($_POST['impresora']))? : 'false';
+    $backup = (isset($_POST['backup']))? : 'false';
 
     //validando tipo de equipo
     if($tp == ''){
@@ -51,10 +51,11 @@ if(isset($_POST['enviar'])){
     if(!$errores){
         require_once 'modelo/equipo.php';
         require_once 'control/controlEquipo.php'; 
-        $equipo = new Equipo($tp, $imei, $serial, $sim, $ciudad, $ehs, $celuweb, $disponible, $cargador, $comodato, $impresora);
+        $equipo = new Equipo($tp, $imei, $serial, $sim, $ciudad, $ehs, $celuweb, $disponible, $cargador, $comodato, $backup);
         $equipoControl = new controlEquipo();
         $equipoControl->registroEquipo($equipo);
         echo '<script type="text/javascript">alert("Equipo Registrado con Exito!")</script>';
+        
     }
 }
 
@@ -109,15 +110,15 @@ if(isset($_POST['enviar'])){
             <input type="text" id="ciudad" name="ciudad" placeholder="CIUDAD...">
             <label for="aplicaciones">Aplicaciones Instaladas:</label>
             <div class="aplicaciones">
-                <label for="ehs">ehs:</label><input type="radio" id="ehs" value="ehs" name="ehs" class="ehs">
-                <label for="celuweb" class="celuweb">Celuweb:</label><input type="radio" id="celuweb" value="celuweb" name="celuweb" class="ehs">
+                <label for="ehs">ehs:</label><input type="radio" id="ehs"  name="ehs" class="ehs">
+                <label for="celuweb" class="celuweb">Celuweb:</label><input type="radio" id="celuweb"  name="celuweb" class="ehs">
             </div>
             <label for="estado">Estado:</label>
             <div class="estado">
-                <label for="disponible">Disponible:</label><input type="radio" id="disponible" value="disponible" name="disponible">
-                <label for="cargador">Cargador:</label><input type="radio" id="cargador" value="cargador" name="cargador">
-                <label for="comodato">Comodato:</label><input type="radio" id="comodato" value="comodato" name="comodato">
-                <label for="comodato">Backup:</label><input type="radio" id="impresora" value="impresora" name="impresora">
+                <label for="disponible">Disponible:</label><input type="radio" id="disponible" name="disponible">
+                <label for="cargador">Cargador:</label><input type="radio" id="cargador"  name="cargador">
+                <label for="comodato">Comodato:</label><input type="radio" id="comodato"  name="comodato">
+                <label for="backup">Backup:</label><input type="radio" id="impresora"  name="backup">
             </div>
 
         </fieldset>

@@ -11,9 +11,9 @@ class equipo{
     private $disponible;
     private $cargador;
     private $comodato;
-    private $impresora;
+    private $backup;
 
-    public function __construct($tEquipo,$imei,$serial,$nSim,$ciudad,$ehs,$celuweb,$disponible,$cargador,$comodato,$impresora){
+    public function __construct($tEquipo,$imei,$serial,$nSim,$ciudad,$ehs,$celuweb,$disponible,$cargador,$comodato,$backup){
         $this->tEquipo = $tEquipo;
         $this->imei = $imei;
         $this->serial = $serial;
@@ -24,7 +24,7 @@ class equipo{
         $this->disponible = $disponible;
         $this->cargador = $cargador;
         $this->comodato = $comodato;
-        $this->impresora = $impresora;
+        $this->backup = $backup;
     }
     public function GetTEquipo(){
         return $this->tEquipo;
@@ -86,11 +86,11 @@ class equipo{
     public function SetComodato($comodato){
         $this->comodato = $comodato;
     }
-    public function GetImpresora(){
-        return $this->impresora;
+    public function GetBackup(){
+        return $this->backup;
     }
-    public function SetImpresora($impresora){
-        $this->impresora = $impresora;
+    public function SetImpresora($backup){
+        $this->backup = $backup;
     }
 
 }
