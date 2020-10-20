@@ -52,10 +52,7 @@ if(isset($_POST['enviar'])){
         $controlComodato = new controlComodato();
         $controlComodato->registroComodato($comodato);
         echo'<script type="text/javascript"> alert("Registro Finalizado con Exito!")</script>';
-    }
-
-       
-  
+    } 
 }
 
 

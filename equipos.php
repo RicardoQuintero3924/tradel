@@ -117,7 +117,7 @@ if(isset($_POST['enviar'])){
                 <label for="disponible">Disponible:</label><input type="radio" id="disponible" value="disponible" name="disponible">
                 <label for="cargador">Cargador:</label><input type="radio" id="cargador" value="cargador" name="cargador">
                 <label for="comodato">Comodato:</label><input type="radio" id="comodato" value="comodato" name="comodato">
-                <label for="comodato">Impresora:</label><input type="radio" id="impresora" value="impresora" name="impresora">
+                <label for="comodato">Backup:</label><input type="radio" id="impresora" value="impresora" name="impresora">
             </div>
 
         </fieldset>
