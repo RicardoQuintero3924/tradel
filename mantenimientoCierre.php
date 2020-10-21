@@ -25,11 +25,13 @@
         <a href="#"><i class="fas fa-search"></i></a>
     </nav>
     <div class="filtro">
-        <fieldset class="contenedor">
-        <legend>CASO:</legend>
-        <input type="text" id="caso" name="caso" placeholder="CASO...">
-        <input type="submit" name="consultar" value="Consultar" class="btnfiltro">
-        </fieldset>
+        <form method="POST">
+            <fieldset class="contenedor">
+                <legend>CASO:</legend>
+                <input type="text" id="caso" name="caso" placeholder="CASO...">
+                <input type="submit" name="consultar" value="Consultar" class="btnfiltro">
+            </fieldset>
+        </form>
     </div>
     <form method="POST" class="contenedor" style="display: none;">
 
