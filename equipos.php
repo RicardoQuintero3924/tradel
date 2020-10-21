@@ -54,8 +54,9 @@ if(isset($_POST['enviar'])){
         $equipo = new Equipo($tp, $imei, $serial, $sim, $ciudad, $ehs, $celuweb, $disponible, $cargador, $comodato, $backup);
         $equipoControl = new controlEquipo();
         $equipoControl->registroEquipo($equipo);
-        echo '<script type="text/javascript">alert("Equipo Registrado con Exito!")</script>';
-        
+        echo '<script type="text/javascript">alert("Equipo Registrado con Exito!")</script>';        
+    }else{
+        echo '<script type="text/javascript">alert("DebeDiligenciar Todos los campos!")</script>';
     }
 }
 

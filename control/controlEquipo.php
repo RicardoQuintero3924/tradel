@@ -37,4 +37,8 @@ class controlEquipo{
 
     }
 
+    public function consultaTodos(){
+        
+    }
+
 }
