@@ -372,3 +372,32 @@ textarea {
 .error {
     text-transform: uppercase;
 }
+
+
+/** vista mantenimiento cierre**/
+
+.filtro fieldset {
+    border: 2px solid var(--colorCorreo);
+    margin-bottom: 3rem;
+    box-shadow: 0 0 30px var(--letra);
+}
+
+.filtro legend {
+    font-size: 2rem;
+    font-family: var(--fuente);
+    color: var(--letra);
+    text-shadow: 0 0 3px var(--colorCorreo);
+}
+
+.btnfiltro {
+    padding: 10px;
+    text-transform: uppercase;
+    font-family: var(--fuente);
+    background-color: var(--color);
+}
+
+.btnfiltro:hover {
+    background-color: var(--letra);
+    color: var(--color);
+    cursor: pointer;
+}
