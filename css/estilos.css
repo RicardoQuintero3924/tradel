@@ -401,3 +401,42 @@ textarea {
     color: var(--color);
     cursor: pointer;
 }
+
+/** vista envio de equipos a mantenimiento **/
+.seccion-envio{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid var(--letra);
+    height: 650px;
+}
+
+.seccion-envio fieldset {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.seccion-envio select,
+input:not([type="submit"]) {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    background-color: var(--color);
+    font-family: var(--fuente);
+    color: var(--letra);
+    border: 1px solid var(--letra);
+}
+.seccion-envio legend {
+    font-family: var(--fuente);
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    color: var(--letra);
+    text-shadow: 0 0 2px black;
+}
+.seccion-envio label {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-family: var(--fuente);
+    color: var(--letra);
+    margin-top: 20px;
+}
