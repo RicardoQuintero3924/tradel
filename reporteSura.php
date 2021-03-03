@@ -1,3 +1,8 @@
+<?php
+$errores = "";
+
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -32,45 +37,46 @@
                 <a href="#"><i class="fas fa-search"></i></a>
             </div>
         </div>
+        <form method="POST">
+            <fieldset id="robo" class="contenedor seccion-equipo info  clearflix">
+                <legend>Robo</legend>
+                <label for="nReporte">Numero Reporte SURA:</label>
+                <input type="text" id="nReporte" value="" name="nReporte" placeholder="Numero Reporte SURA...">
+                <label for="cobro">Cobrado A:</label>
+                <input type="text" id="cobro" name="cobro" placeholder="Cobrado A...">
+                <label for="pSura">Pagado Por SURA:</label>
+                <input type="text" id="pSura" name="pSura" placeholder="Papagado Por Sura...">
+                <label for="denuncia">Denuncia:</label>
+                <input type="text" id="denuncia" name="denuncia" placeholder="Número Denuncia...">
+                <label for="observaciones">Observaciones</label>
+                <textarea name="observaciones" id="observaciones"></textarea>
+                <div class="contenedor">
+                    <input type="submit" class="boton">
+                </div>
 
-        <fieldset id="robo" class="contenedor seccion-equipo info  clearflix">
-            <legend>Robo</legend>
-            <label for="nReporte">Numero Reporte SURA:</label>
-            <input type="text" id="nReporte" value="" name="nReporte" placeholder="Numero Reporte SURA...">
-            <label for="cobro">Cobrado A:</label>
-            <input type="text" id="cobro" name="cobro" placeholder="Cobrado A...">
-            <label for="pSura">Pagado Por SURA:</label>
-            <input type="text" id="pSura" name="pSura" placeholder="Papagado Por Sura...">
-            <label for="denuncia">Denuncia:</label>
-            <input type="text" id="denuncia" name="denuncia" placeholder="Número Denuncia...">
-            <label for="observaciones">Observaciones</label>
-            <textarea name="observaciones" id="observaciones"></textarea>
-            <div class="contenedor">
-                <input type="submit" class="boton">
-            </div>
+            </fieldset>
 
-        </fieldset>
+            <fieldset id="daño" class="contenedor seccion-equipo info  clearfix">
+                <legend>daño</legend>
+                <label for="cReparacion">Costo Reparacion:</label>
+                <input type="text" id="cReparacios" name="cReparacion" value="" placeholder="Costo Reparacion...">
+                <label for="rSura">Reporte Sura:</label>
+                <input type="text" id="rSura" name="rSura" value="" placeholder="Reporte Sura...">
+                <label for="cobrado">Cobrado A:</label>
+                <input type="text" id="cobrado" name="cobrado" value="" placeholder="Cobrado a...">
+                <label for="cMantenimiento">Numero Caso Mantenimiento:</label>
+                <input type="text" id="cMantenimiento" name="cMantenimiento" value="" placeholder="Numero Caso Mantenimiento...">
+                <label for="observaciones">Observaciones</label>
+                <textarea name="observaciones" id="observaciones"></textarea>
+                <div class="contenedor">
+                    <input type="submit" class="boton">
+                </div>
 
-        <fieldset id="daño" class="contenedor seccion-equipo info  clearfix">
-            <legend>daño</legend>
-            <label for="cReparacion">Costo Reparacion:</label>
-            <input type="text" id="cReparacios" name="cReparacion" value="" placeholder="Costo Reparacion...">
-            <label for="rSura">Reporte Sura:</label>
-            <input type="text" id="rSura" name="rSura" value="" placeholder="Reporte Sura...">
-            <label for="cobrado">Cobrado A:</label>
-            <input type="text" id="cobrado" name="cobrado" value="" placeholder="Cobrado a...">
-            <label for="cMantenimiento">Numero Caso Mantenimiento:</label>
-            <input type="text" id="cMantenimiento" name="cMantenimiento" value="" placeholder="Numero Caso Mantenimiento...">
-            <label for="observaciones">Observaciones</label>
-            <textarea name="observaciones" id="observaciones"></textarea>
-            <div class="contenedor">
-                <input type="submit" class="boton">
-            </div>
-
-        </fieldset>
+            </fieldset>
 
 
     </div>
+    </form>
     <footer class="contenedor">
         <div class="footer">
             <p class="copyright">Todos los Derechos Reservados &copy; </p>

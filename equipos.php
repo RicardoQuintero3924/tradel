@@ -56,7 +56,7 @@ if(isset($_POST['enviar'])){
         $equipoControl->registroEquipo($equipo);
         echo '<script type="text/javascript">alert("Equipo Registrado con Exito!")</script>';        
     }else{
-        echo '<script type="text/javascript">alert("DebeDiligenciar Todos los campos!")</script>';
+        echo '<script type="text/javascript">alert("Debe Diligenciar Todos los campos!")</script>';
     }
 }
 

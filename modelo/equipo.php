@@ -30,7 +30,7 @@ class equipo{
         return $this->tEquipo;
     }
     public function SetTEquipo($tEquipo){
-        $this->tQuipo = $tEquipo;
+        $this->tEquipo = $tEquipo;
     }
     public function GetImei(){
         return $this->imei;

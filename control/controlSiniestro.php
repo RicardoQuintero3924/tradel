@@ -18,7 +18,7 @@ class controlSiniestro{
 
     public function registroSiniestro($siniestro){
         try{
-            $sql = 'Insert Into siniestro (tipo_equipo, tipo_siniestro, imei, serial, fecha, empresa, ruta, nombre) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+            $sql = 'insert into siniestro (tipo_equipo,tipo_siniestro,imei,serialE,fecha,empresa,ruta,nombre) values (?, ?, ?, ?, ?, ?, ?, ?)';
             $prep = $this->cnx->prepare($sql);
             $prep->execute([
                 $siniestro->GetTipoEquipo(),
@@ -33,7 +33,7 @@ class controlSiniestro{
         }
         catch(PDOException $ex){
             die($ex->getMessage());
-            var_dump($ex);
+            var_dump('Error SQL: '+$ex);
         }
     }
 }

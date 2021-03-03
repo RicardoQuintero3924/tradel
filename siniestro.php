@@ -1,82 +1,41 @@
 <?php
-$errores = '';
+    $errores= "";
 
-if (isset($_POST['enviar'])) {
+    if(isset($_POST['enviar'])){
+        $tipoEquipo = $_POST['tipoEquipo'];
+        $tsiniestro = $_POST['tsiniestro'];
+        $imei = $_POST['imei'];
+        $serial = $_POST['serial'];
+        $fsiniestro = $_POST['fsiniestro'];
+        $empresa = $_POST['empresa'];
+        $ruta = $_POST['ruta'];
+        $nombre = $_POST['nombre'];
 
-    $tequipo = $_POST['tequipo'];
-    $tsiniestro = $_POST['tsiniestro'];
-    $imei = $_POST['imei'];
-    $serial = $_POST['serial'];
-    $fsiniestro = $_POST['fsiniestro'];
-    $empresa = $_POST['empresa'];
-    $ruta = $_POST['ruta'];
-    $nombre = $_POST['nombre'];
-    
-    //Validando Tipo de equipo
-    if ($tequipo == '') {
-        $errores .= 'POR FAVOR SELECCIONE UN TIPO DE EQUIPO';
-    }
-    //Validando Tipo de Siniestro
-    if ($tsiniestro == '') {
-        $errores .= 'POR FAVOR DILIGENCIE EL CAMPO TIPO SINIESTRO';
-    }
-    //Validando Imei
-    if (!empty($imei)) {
-        $imei = trim($imei);
-        $imei = filter_var($imei, FILTER_SANITIZE_STRING);
-    } else {
-        $errores .= 'POR FAVOR DILIGENCIE EL CAMPO IMEI';
-    }
-    //validando Serial
-    if (!empty($serial)) {
-        $serial = trim($serial);
-        $serial = filter_var($serial, FILTER_SANITIZE_STRING);
-    } else {
-        $errores .= 'POR FAVOR DILIGENCIE EL CAMPO SERIAL';
-    }
-    //Validando siniestro
-    if (!empty($fsiniestro)) {
-        $fsiniestro = trim($fsiniestro);
-        $fsiniestro = filter_var($fsiniestro, FILTER_SANITIZE_STRING);
-    } else {
-        $errores .= 'POR FAVOR DILIGENCIE EL CAMPO SERIAL';
-    }
-    //Validando Empresa
-    if (!empty($empresa)) {
-        $empresa = trim($empresa);
-        $empresa = filter_var($empresa, FILTER_SANITIZE_STRING);
-    } else {
-        $errores .= 'POR FAVOR DILIGENCIE EL CAMPO EMPRESA';
-    }
-    //Validando Ruta
-    if (!empty($ruta)) {
-        $ruta = trim($ruta);
-        $ruta = filter_var($ruta, FILTER_SANITIZE_STRING);
-    } else {
-        $errores .= 'POR FAVOR DILIGENCIE EL CAMPO RUTA';
-    }
-    //Validando Nombre
-    if (!empty($nombre)) {
-        $nombre = trim($nombre);
-        $nombre = filter_var($nombre, FILTER_SANITIZE_STRING);
-    } else {
-        $errores .= 'POR FAVOR DILIGENCIE EL CAMPO NOMBRE';
-    }
-    
-    if (!$errores) {
+        if(!empty($tipoEquipo)){
+            $tipoEquipo = trim($tipoEquipo);
+            $tipoEquipo = filter_var($tipoEquipo, FILTER_SANITIZE_STRING);
+        }else{
+            $errores .= 'Por Favor Ingrese el Tipo de Equipo';
+        }
+
         require_once 'modelo/siniestro.php';
         require_once 'control/controlSiniestro.php';
-        $siniestro = new siniestro($tequipo, $tsiniestro, $imei, $serial, $fsiniestro, $empresa, $ruta, $nombre);
+        $siniestro = new Siniestro($tipoEquipo, $tsiniestro, $imei, $serial, $fsiniestro, $empresa, $ruta, $nombre);
         $controlSiniestro = new controlSiniestro();
-        $controlSiniestro->registroSiniestro($siniestro);
-        echo '<script type="text/javascript"> alert("Siniestro Almacenado con Exito")</script>';
-    } else {
-        echo '<script type="text/javascript>" alert("POR FAVOR DILIGENCIAR BIEN LA INFORMACION")</script>';
+        var_dump($siniestro);
+        //var_dump(isset($siniestro));
+        var_dump(is_null($tipoEquipo));
+        print_r($tipoEquipo);
+        // print_r($tsiniestro);
+        // print_r($imei);
+        // print_r($serial);
+        // print_r($fsiniestro);
+        // print_r($empresa);
+        // print_r($ruta);
+        // print_r($nombre);
+        
+        //$controlSiniestro->registroSiniestro($siniestro);
     }
-    
-    
-}
-   var_dump($errores);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -107,8 +66,8 @@ if (isset($_POST['enviar'])) {
 
         <fieldset class="contenedor seccion-equipo">
             <legend>siniestros</legend>
-            <label for="tequipo">Tipo Equipo:</label>
-            <select name="tequipo" id="tequipo">
+            <label for="tipoEquipo">Tipo Equipo:</label>
+            <select name="tipoEquipo" id="tipoEquipo">
                 <option value="" disabled selected>-- Seleccione --</option>
                 <option value="tc25">TC25</option>
                 <option value="zq110">ZQ110</option>
@@ -132,10 +91,7 @@ if (isset($_POST['enviar'])) {
             <label for="nombre">nombre:</label>
             <input type="text" id="nombre" name="nombre" placeholder="NOMBRE RESPONSABLE RUTA...">
         </fieldset>
-        <input type="submit" value="enviar" class="boton">
-        <pre>
-        <p><? var_dump($errores) ?></p>
-        </pre>
+        <input type="submit" value="enviar" name="enviar" class="boton">
     </form>
     <footer class="contenedor">
         <div class="footer">
