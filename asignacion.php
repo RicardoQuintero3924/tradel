@@ -2,7 +2,6 @@
 $errores = '';
 
 if(isset($_POST['enviar'])){
-
     $nroComodato = $_POST['nroComodato'];
     $imei = $_POST['imei'];
     $serial = $_POST['serial'];

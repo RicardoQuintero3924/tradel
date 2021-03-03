@@ -100,6 +100,7 @@ if(isset($_POST['enviar'])){
                 <option value="" disabled selected>-- Seleccione --</option>
                 <option value="TC25">TC25</option>
                 <option value="ZQ110">ZQ110</option>
+                <option value="CELULAR">CELULAR</option>
             </select>
             <label for="imei">IMEI:</label>
             <input type="text" id="imei" name="imei" placeholder="IMEI EQUIPO...">

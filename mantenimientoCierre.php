@@ -33,7 +33,7 @@
             </fieldset>
         </form>
     </div>
-    <form method="POST" class="contenedor" style="display: none;">
+    <form method="POST" class="contenedor" style="display:none;">
 
         <fieldset class="contenedor seccion-equipo">
             <legend>Mantenimiento</legend>
