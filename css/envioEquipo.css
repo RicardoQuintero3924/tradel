@@ -1,0 +1,41 @@
+:root{
+    --fuente: font-family: 'Noto Sans JP', sans-serif;
+}
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+.envio fieldset{
+    border: 2px solid var(--letra);
+}
+.envio legend{
+text-transform: uppercase;
+font-family: var(--fuente);
+font-size: 1.3rem;
+color: var(--letra);
+text-shadow: 0 0 2px black;
+}
+.envio select,
+    input:not([type="submit"]) {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        background-color: var(--color);
+        font-family: var(--fuente);
+        color: var(--letra);
+        border: 1px solid var(--letra);
+}
+
+.envio label {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-family: var(--fuente);
+    color: var(--letra);
+    margin-top: 20px;
+}

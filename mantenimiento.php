@@ -74,7 +74,7 @@ if(isset($_POST['btn_enviar'])){
         </div>
     </header>
     <nav class="icono contenedor">
-        <a href="paginaPrincipal.php"><i class="far fa-hand-point-left"></i></a>
+        <a href="envioMantenimiento.php"><i class="far fa-hand-point-left"></i></a>
         <a href="mantenimientoCierre.php"><i class="fas fa-pencil-alt"></i></a>
         <a href="#"><i class="far fa-file-alt"></i></a>
         <a href="#"><i class="fas fa-search"></i></a>

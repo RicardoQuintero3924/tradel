@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,29 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/envioEquipo.css">
     <link rel="stylesheet" href="css/estilos.css">
-    <title>Siniestros</title>
+    <title>Envío Equipo Mantenimiento</title>
 </head>
 
 <body>
     <header class="contenedor">
         <div class="barra contenedor">
             <div class="titulo">
-                <h1>control de Equipos</h1>
+                <h1>Equipos Mantenimiento</h1>
             </div>
         </div>
     </header>
     <nav class="icono contenedor">
         <a href="paginaPrincipal.php"><i class="far fa-hand-point-left"></i></a>
-        <a href="reporteSura.php"><i class="fas fa-book"></i></a>
+        <a href="mantenimiento.php"><i class="fas fa-folder"></i></a>
         <a href="#"><i class="fas fa-search"></i></a>
     </nav>
-    <form method="POST" class="contenedor">
-
-        <fieldset class="contenedor seccion-equipo">
-            <legend>envio equipo mantenimiento</legend>
+    <form method="POST" class="contenedor envio">
+        <fieldset class="envio">
+            <legend>Envio Equipos Mantenimiento</legend>
             <label for="tipoEquipo">Tipo Equipo:</label>
-            <select name="tipoEquipo" id="tipoEquipo">
+            <select name="tipoEquipo" id="tipoEquipo" class="tipoequipo">
                 <option value="" disabled selected>-- Seleccione --</option>
                 <option value="tc25">TC25</option>
                 <option value="zq110">ZQ110</option>
@@ -51,6 +50,7 @@
             <label for="observaciones">Observaciones:</label>
             <textarea name="observaciones" id="observaciones"></textarea>
         </fieldset>
+
         <input type="submit" value="enviar" name="enviar" class="boton">
     </form>
     <footer class="contenedor">
