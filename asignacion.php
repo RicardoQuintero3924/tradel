@@ -77,6 +77,7 @@ if(isset($_POST['enviar'])){
     <link rel="stylesheet" href="css/estilos.css">
     <!-- <link rel="stylesheet" href="js/main.js"> -->
     <title>Zebra Tradel</title>
+    <link rel="shortcut icon" href="favicon.ico" />
 </head>
 
 <body>

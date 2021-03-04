@@ -50,6 +50,7 @@ if (isset($_POST['btn_login'])) {
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/estilos.css">
     <title>Zebra Tradel</title>
+    <link rel="shortcut icon" href="favicon.ico" />
 </head>
 
 <body>

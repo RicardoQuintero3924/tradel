@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/envioEquipo.css">
     <link rel="stylesheet" href="css/estilos.css">
     <title>Envío Equipo Mantenimiento</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    
 </head>
 
 <body>
