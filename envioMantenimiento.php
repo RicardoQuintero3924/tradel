@@ -1,3 +1,85 @@
+<?php
+ $errores = "";
+
+ if(isset($_POST['enviar'])){
+     $tipoEquipo = $_POST['tipoEquipo'];
+     $imei = $_POST['imei'];
+     $serial = $_POST['serial'];
+     $sedeE = $_POST['sedeE'];
+     $fechaE = $_POST['fechaE'];
+     $empresa = $_POST['empresa'];
+     $ruta = $_POST['ruta'];
+     $responsableE = $_POST['responsableE'];
+     $observaciones = $_POST['observaciones'];
+
+    if(empty($tipoEquipo)){
+        $errorres .= 'Seleccionar el Tipo de Equipo';
+    }
+
+     if(!empty($imei)){
+         $imei = trim($imei);
+         $imei = filter_var($imei, FILTER_SANITIZE_STRING);
+     }else{
+         $errores .= 'Debe Diligenciar el Imei del Equipo';
+     }
+
+     if(!empty($serial)){
+         $serial = trim($serial);
+         $serial = filter_var($serial, FILTER_SANITIZE_STRING);
+     }else{
+         $errores .= 'Debe Diligenciar el serial del Equipo';
+     }
+     if(!empty($sedeE)){
+         $sedeE = trim($sedeE);
+         $sedeE = filter_var($sedeE, FILTER_SANITIZE_STRING);
+     }else{
+         $errores .= 'Debe Diligenciar la sede a la que se envia el Equipo';
+     }
+     if(!empty($fechaE)){
+         $fechaE = trim($fechaE);
+         $fechaE = filter_var($fechaE, FILTER_SANITIZE_STRING);
+     }else{
+         $errores .= 'Debe Diligenciar la fecha de envio';
+     }
+     if(!empty($empresa)){
+         $empresa = trim($empresa);
+         $empresa = filter_var($empresa, FILTER_SANITIZE_STRING);
+     }else{
+         $errores .= 'Debe Diligenciar el Campo Empresa';
+     }
+     if(!empty($ruta)){
+         $ruta = trim($ruta);
+         $ruta = filter_var($ruta, FILTER_SANITIZE_STRING);
+     }else{
+         $errores .= 'Debe Diligenciar el Campo Ruta';
+     }
+     if(!empty($responsableE)){
+         $responsableE = trim($responsableE);
+         $responsableE = filter_var($responsableE, FILTER_SANITIZE_STRING);
+     }else{
+         $errores .= 'Dede Diligenciar el Campo Responsable';
+     }
+     if(!empty($observaciones)){
+         $observaciones = trim($observaciones);
+         $observaciones = filter_var($observaciones, FILTER_SANITIZE_STRING);
+     }else{
+         $errores .= 'Por favor Ingrese los Comentarios del Equipo';
+     }
+
+     if(!$errores){
+         require_once 'modelo/envioMantenimientoM.php';
+         require_once 'control/controlEnvioMantenimiento.php';
+
+         $mantenimiento = new envioMantenimiento($tipoEquipo, $imei, $serial, $sedeE, $fechaE, $empresa, $ruta, $responsableE, $observaciones);
+         $controlEnvio = new ControlEnvioMantenimiento();
+         $controlEnvio->registroEnvioMantenimiento($mantenimiento);
+         echo '<script type="text/javascript">alert("Envío Registrado con Exito!")</script>';
+     }else{
+        echo '<script type="text/javascript">alert("Error Falta Diligenciar Campos!")</script>';
+     }
+     var_dump($mantenimiento);
+ }
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -32,8 +114,8 @@
             <label for="tipoEquipo">Tipo Equipo:</label>
             <select name="tipoEquipo" id="tipoEquipo" class="tipoequipo">
                 <option value="" disabled selected>-- Seleccione --</option>
-                <option value="tc25">TC25</option>
-                <option value="zq110">ZQ110</option>
+                <option value="TC25">TC25</option>
+                <option value="ZQ110">ZQ110</option>
             </select>
             <label for="imei">IMEI:</label>
             <input type="text" id="imei" name="imei" placeholder="IMEI EQUIPO...">
@@ -47,8 +129,8 @@
             <input type="text" id="empresa" name="empresa" placeholder="EMPRESA...">
             <label for="ruta">Ruta:</label>
             <input type="text" id="ruta" name="ruta" placeholder="NUMERO Ruta...">
-            <label for="responsable">responsable Equipo:</label>
-            <input type="text" id="responsable" name="responsable" placeholder="NOMBRE RESPONSABLE EQUIPO...">
+            <label for="responsableE">responsable Equipo:</label>
+            <input type="text" id="responsableE" name="responsableE" placeholder="NOMBRE RESPONSABLE EQUIPO...">
             <label for="observaciones">Observaciones:</label>
             <textarea name="observaciones" id="observaciones"></textarea>
         </fieldset>

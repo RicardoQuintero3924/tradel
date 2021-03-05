@@ -11,7 +11,7 @@ class envioMantenimiento{
     private $responsableE;
     private $observaciones;
 
-    public function __construct($tipoEquipo, $imei, $serial, $sedeE, $fechaE, $empresa, $ruta, $responsable, $observaciones){
+    public function __construct($tipoEquipo, $imei, $serial, $sedeE, $fechaE, $empresa, $ruta, $responsableE, $observaciones){
         $this->tipoEquipo = $tipoEquipo;
         $this->imei = $imei;
         $this->serial = $serial;
@@ -19,7 +19,7 @@ class envioMantenimiento{
         $this->fechaE = $fechaE;
         $this->empresa = $empresa;
         $this->ruta = $ruta;
-        $this->responsable = $responsable;
+        $this->responsableE = $responsableE;
         $this->observaciones = $observaciones;
     }
 
