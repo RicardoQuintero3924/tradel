@@ -2,7 +2,6 @@
 $errores = '';
 if(isset($_POST['btn_enviar'])){
     $imei = $_POST['imei'];
-    $fEnvio = $_POST['fEnvio'];
     $costo = $_POST['costo'];
     $caso = $_POST['caso'];
     $estado = (isset($_POST['estado'])) ? implode(', ', $_POST['estado']) : '';
@@ -13,13 +12,6 @@ if(isset($_POST['btn_enviar'])){
         $imei = filter_var($imei, FILTER_SANITIZE_STRING);
     }else{
         $errores .= 'Ingrese el Imei';
-    }
-
-    if(!empty($fEnvio)){
-        $fEnvio = trim($fEnvio);
-        $fEnvio = filter_var($fEnvio, FILTER_SANITIZE_STRING);
-    }else{
-        $errores .= 'Agregue la Fecha de Envio';
     }
 
     if(!empty($costo)){
@@ -43,7 +35,7 @@ if(isset($_POST['btn_enviar'])){
     if(!$errores){
        require_once 'modelo/mMantenimiento.php';
        require_once 'control/controlMantenimiento.php';
-       $mantenimiento = new Mantenimiento($imei, $fEnvio, $costo, $caso, $estado, $descripcion );
+       $mantenimiento = new Mantenimiento($imei, $costo, $caso, $estado, $descripcion );
        $controlMantenimiento = new controlMantenimiento();
        $controlMantenimiento->registroMantenimiento($mantenimiento);
        echo '<script type="text/javascript"> alert("Registro Almacenado con Exito!")</script>';
@@ -52,6 +44,9 @@ if(isset($_POST['btn_enviar'])){
         echo '<script type="text/javascript"> alert("Ingrese La Informacion de los Campos Obligatorios")</script>';
     }    
 }
+require_once 'control/controlMantenimiento.php'; 
+$imeis = new controlMantenimiento();
+$registro = $imeis->consultaImei();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -85,9 +80,12 @@ if(isset($_POST['btn_enviar'])){
         <fieldset class="contenedor seccion-equipo">
             <legend>Mantenimiento</legend>
             <label for="imei">IMEI:</label>
-            <input type="text" id="imei" name="imei" placeholder="IMEI EQUIPO...">
-            <label for="fecha">fecha envio:</label>
-            <input type="date" id="fecha" name="fEnvio" placeholder="FECHA ENVIO...">
+            <select name="imei" id="imei">
+                <option value="" disabled selected>-- Seleccione --</option>
+                <?php foreach($registro as $imei):?>
+                <option value="<?php echo $imei->imei ?>"><?php echo $imei->imei ?></option>
+                <?php endforeach ?>   
+            </select>
             <label for="costo">COSTO:</label>
             <input type="text" id="costo" name="costo" placeholder="COSTO MANTENIMIENTO...">
             <label for="caso">CASO:</label>

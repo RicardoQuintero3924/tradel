@@ -2,14 +2,14 @@
 
 class siniestro
 {
-    public  $tipoEquipo;
-    public $tipoSiniestro;
-    public $imei;
-    public $serial;
-    public $fsiniestro;
-    public $empresa;
-    public $ruta;
-    public $nombre;
+    private $tipoEquipo;
+    private $tipoSiniestro;
+    private $imei;
+    private $serial;
+    private $fsiniestro;
+    private $empresa;
+    private $ruta;
+    private $nombre;
 
     public function __construct($tipoEquipo, $tipoSiniestro, $imei, $serial, $fsiniestro, $empresa, $ruta, $nombre)
     {

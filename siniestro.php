@@ -11,30 +11,60 @@
         $ruta = $_POST['ruta'];
         $nombre = $_POST['nombre'];
 
-        if(!empty($tipoEquipo)){
-            $tipoEquipo = trim($tipoEquipo);
-            $tipoEquipo = filter_var($tipoEquipo, FILTER_SANITIZE_STRING);
-        }else{
+        if(empty($tipoEquipo)){
             $errores .= 'Por Favor Ingrese el Tipo de Equipo';
         }
-
-        require_once 'modelo/siniestro.php';
-        require_once 'control/controlSiniestro.php';
-        $siniestro = new Siniestro($tipoEquipo, $tsiniestro, $imei, $serial, $fsiniestro, $empresa, $ruta, $nombre);
-        $controlSiniestro = new controlSiniestro();
-        var_dump($siniestro);
-        //var_dump(isset($siniestro));
-        var_dump(is_null($tipoEquipo));
-        print_r($tipoEquipo);
-        // print_r($tsiniestro);
-        // print_r($imei);
-        // print_r($serial);
-        // print_r($fsiniestro);
-        // print_r($empresa);
-        // print_r($ruta);
-        // print_r($nombre);
+        if(empty($tsiniestro)){
+            $errores .= 'Debe Diligenciar el Tipo Siniestro';
+        }
+        if(!empty($imei)){
+            $imei = trim($imei);
+            $imei = filter_var($imei, FILTER_SANITIZE_STRING);
+        }else{
+            $errores .= 'Debe Diligenciar el Campo Imei';
+        }
+        if(!empty($serial)){
+            $serial = trim($serial);
+            $serial = filter_var($serial, FILTER_SANITIZE_STRING);
+        }else{
+            $errores .= 'Debe Diligenciar el campo Serial';
+        }
+        if(!empty($fsiniestro)){
+            $fsiniestro = trim($fsiniestro);
+            $fsiniestro = filter_var($fsiniestro, FILTER_SANITIZE_STRING);
+        }else{
+            $errores .= 'Debe Diligenciar el campo Siniestro';
+        }
+        if(!empty($empresa)){
+            $empresa = trim($empresa);
+            $empresa = filter_var($empresa, FILTER_SANITIZE_STRING);
+        }else{
+            $errores .= 'Debe Diligenciar el Campo Empresa';
+        }
+        if(!empty($ruta)){
+            $ruta = trim($ruta);
+            $ruta = filter_var($ruta, FILTER_SANITIZE_STRING);
+        }else{
+            $errores .= 'Debe Diligenciar el campo Ruta';
+        }
+        if(!empty($nombre)){
+            $nombre = trim($nombre);
+            $nombre = filter_var($nombre, FILTER_SANITIZE_STRING);
+        }else{
+            $errores .= 'Debe Diligenciar el Campo Nombre';
+        }
         
-        //$controlSiniestro->registroSiniestro($siniestro);
+        if(!$errores){
+            require_once 'modelo/siniestro.php';
+            require_once 'control/controlSiniestro.php';
+            $siniestro = new siniestro($tipoEquipo, $tsiniestro, $imei, $serial, $fsiniestro, $empresa, $ruta, $nombre);
+            $controlSiniestro = new controlSiniestro();
+            $controlSiniestro->registroSiniestro($siniestro);
+            echo '<script type="text/javascript">alert("Siniestro Registrado con Exito! '.$tipoEquipo.'")</script>';
+        }else{
+            echo '<script type="text/javascript">alert("Error: Diligenciar todos los campos!")</script>';
+        }
+        
     }
 ?>
 <!DOCTYPE html>

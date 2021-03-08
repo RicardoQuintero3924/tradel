@@ -14,11 +14,10 @@ class controlMantenimiento{
 
     public function registroMantenimiento($mantenimiento){
         try{
-            $sql = 'Insert into mantenimiento (imei, fEnvio, costo, caso, estado, descripcion) values (?, ?, ?, ?, ?, ?)';
+            $sql = 'Insert into mantenimiento (imei, costo, caso, estado, descripcion) values (?, ?, ?, ?, ?)';
             $prep = $this->cnx->prepare($sql);
             $prep->execute([
                 $mantenimiento->GetImei(),
-                $mantenimiento->GetFEnvio(),
                 $mantenimiento->GetCosto(),
                 $mantenimiento->GetCaso(),
                 $mantenimiento->GetEstado(),
@@ -28,5 +27,17 @@ class controlMantenimiento{
         catch(PDOException $ex){
             die($ex->getMessage());
         }
+    }
+
+    public function consultaImei(){
+        try{
+            $sql = 'SELECT imei FROM enviomt';
+            $prep = $this->cnx->prepare($sql);
+            $prep->execute();
+            $imeis= $prep->fetchAll(PDO::FETCH_OBJ);   
+        }catch(PDOException $ex){
+            die($ex->getMessage());
+        }
+        return $imeis;
     }
 }
