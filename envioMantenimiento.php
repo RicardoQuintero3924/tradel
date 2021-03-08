@@ -77,7 +77,7 @@
      }else{
         echo '<script type="text/javascript">alert("Error Falta Diligenciar Campos!")</script>';
      }
-     var_dump($mantenimiento);
+     
  }
 ?>
 <!DOCTYPE html>
