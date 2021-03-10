@@ -6,6 +6,7 @@ if(isset($_POST['btn_enviar'])){
     $caso = $_POST['caso'];
     $estado = (isset($_POST['estado'])) ? implode(', ', $_POST['estado']) : '';
     $descripcion = $_POST['descripcion'];
+    $nroFactura = $_POST['nroFactura'];
 
     if(!empty($imei)){
         $imei = trim($imei);
@@ -28,6 +29,7 @@ if(isset($_POST['btn_enviar'])){
         $errores .= 'Ingrese El Numero de Caso';
     }
 
+
     if($estado == ''){
         $errores .= 'Ingrese el Estado Del Equipo';
     }
@@ -35,7 +37,7 @@ if(isset($_POST['btn_enviar'])){
     if(!$errores){
        require_once 'modelo/mMantenimiento.php';
        require_once 'control/controlMantenimiento.php';
-       $mantenimiento = new Mantenimiento($imei, $costo, $caso, $estado, $descripcion );
+       $mantenimiento = new Mantenimiento($imei, $costo, $caso, $estado, $descripcion, $nroFactura );
        $controlMantenimiento = new controlMantenimiento();
        $controlMantenimiento->registroMantenimiento($mantenimiento);
        echo '<script type="text/javascript"> alert("Registro Almacenado con Exito!")</script>';
@@ -71,8 +73,7 @@ $registro = $imeis->consultaImei();
     </header>
     <nav class="icono contenedor">
         <a href="envioMantenimiento.php"><i class="far fa-hand-point-left"></i></a>
-        <a href="mantenimientoCierre.php"><i class="fas fa-pencil-alt"></i></a>
-        <a href="#"><i class="far fa-file-alt"></i></a>
+        <a href="mantenimientoCierre.php"><i class="far fa-file-alt"></i></a>
         <a href="#"><i class="fas fa-search"></i></a>
     </nav>
     <form method="POST" class="contenedor">
@@ -90,6 +91,8 @@ $registro = $imeis->consultaImei();
             <input type="text" id="costo" name="costo" placeholder="COSTO MANTENIMIENTO...">
             <label for="caso">CASO:</label>
             <input type="text" id="caso" name="caso" placeholder="CASO...">
+            <label for="nroFactura">Numero factura:</label>
+            <input type="text" id="nroFactura" name="nroFactura" placeholder="NUMERO FACTURA">
             <label for="estado[]">Estado:</label>
             <div class="aplicaciones">
                 <label for="estado">Enviado:</label><input type="checkbox" id="enviado" value="enviado" name="estado[]" class="ehs">

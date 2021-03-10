@@ -1,0 +1,30 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+.seleccione  {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    background-color: var(--color);
+    font-family: var(--fuente);
+    color: var(--letra);
+    border: 1px solid var(--letra);
+}
+.btnseleccion {
+    padding: 10px;
+    text-transform: uppercase;
+    font-family: var(--fuente);
+    background-color: var(--color);
+}
+.btnseleccion:hover{
+    background-color: var(--letra);
+    color: var(--color);
+    cursor: pointer;
+}
