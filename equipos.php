@@ -87,8 +87,6 @@ if(isset($_POST['enviar'])){
         <a href="paginaPrincipal.php"><i class="far fa-hand-point-left"></i></a>
         <a href="impresora.php"><i class="fas fa-print"></i></a>
         <a href="asignacion.php"><i class="fas fa-address-book"></i></a>
-        <a href="#"><i class="fas fa-pencil-alt"></i></a>
-        <a href="comodato.php"><i class="far fa-file-alt"></i></a>
         <a href="#"><i class="fas fa-search"></i></a>
     </nav>
     
@@ -100,8 +98,8 @@ if(isset($_POST['enviar'])){
             <select name="tp" id="tp">
                 <option value="" disabled selected>-- Seleccione --</option>
                 <option value="TC25">TC25</option>
-                <option value="ZQ110">ZQ110</option>
-                <option value="CELULAR">CELULAR</option>
+                <!-- <option value="ZQ110">ZQ110</option>
+                <option value="CELULAR">CELULAR</option> -->
             </select>
             <label for="imei">IMEI:</label>
             <input type="text" id="imei" name="imei" placeholder="IMEI EQUIPO...">

@@ -90,6 +90,7 @@ if(isset($_POST['enviar'])){
         </div>
         <div class="icon contenedor">
             <a href="equipos.php"><i class="far fa-hand-point-left"></i></a>
+            <a href="comodato.php"><i class="far fa-file-alt"></i></a>
             <a href="#"><i class="fas fa-search"></i></a>
         </div>
         <form method="POST">
