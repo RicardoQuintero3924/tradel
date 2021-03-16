@@ -82,6 +82,7 @@ if(isset($_POST['enviar'])){
         <div class="icon contenedor">
             <a href="equipos.php"><i class="far fa-hand-point-left"></i></a>
             <a href="https://drive.google.com/file/d/1ICBHxSvk76mJXAR6f1e_f5EGp7-AfNzY/view?usp=sharing"><i class="fab fa-google-drive"></i></a>
+            <i class="fas fa-file-pdf"></i>
             <a href="#"><i class="fas fa-search"></i></a>
         </div>
         <form method="post">

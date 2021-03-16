@@ -159,7 +159,7 @@ i {
 .icono a,
 i:hover {
     cursor: pointer;
-    color: white;
+    color:rgb(70, 70, 70);
     -webkit-transform: scale(1.1);
 }
 
@@ -403,4 +403,12 @@ textarea {
 }
 
 
-/** vista envio de equipos a mantenimiento **/
+/** vista administracion plataforma **/
+
+.icono-admin  i{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 18px;
+    color: var(--letra);
+    font-size: 2rem; 
+}

@@ -16,25 +16,32 @@
     <header class="contenedor">
         <div class="barra contenedor">
             <div class="titulo">
-                <h1>control de Equipos</h1>
+                <h1>Administracion Plataforma</h1>
             </div>
-            <nav class="menu">
-                <a href="equipos.php">Equipos</a>
-                <a href="envioMantenimiento.php">Mantenimiento</a>
-                <a href="siniestro.php">Siniestros</a>
-                <a href="info_soporte.php">Info-Soporte</a>
-                <a href="administracion.php">Administrador</a>
-            </nav>
         </div>
     </header>
+    <nav class="">
+        <a href="#"><i class="fas fa-user"></i></a>
+        <a href="#"><i class="fas fa-mobile"></i></a>
+        <a href="#"><i class="fas fa-print"></i></a>
+    </nav>
+    <!-- <div class="contenedor ">
+    
+    <fieldset>
+    <legend>Administrar</legend>
+    <form action="">
+    <label for="seleccion">Administrar</label>
+    <select name="seleccion" id="seleccion">
+    <option value="usuarios">Usuarios</option>
+    <option value="tipo_equipo">Tipo Equipo</option>
+    <option value="tipo_impresora"></option>
+    </select>
+    </form>
+    </fieldset>
+    </div> -->
 
-
-    <div class="seccion-media contenedor">
-        <div class="seccion-imagen">
-            <img src="images/tradel-900.jpg">
-        </div>
-    </div>
-    <footer class="contenedor">
+    
+    <footer class="contenedor footerA">
         <div class="footer">
             <p class="copyright">Todos los Derechos Reservados &copy; </p>
         </div>
