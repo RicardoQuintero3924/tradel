@@ -22,4 +22,17 @@ class controlTipoEquipo{
         }
         
     }
+
+    public function consultarTipoEquipo(){
+        try{
+            $sql= "select tipo from tipoequipo";
+            $prep = $this->cnx->prepare($sql);
+            $prep->execute();
+            $tipos = $prep->fetchAll(PDO::FETCH_OBJ);
+        }catch(PDOException $ex){
+            die($ex->getMessage());
+        }
+       return $tipos;
+
+    }
 }

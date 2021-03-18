@@ -59,7 +59,9 @@ if(isset($_POST['enviar'])){
         echo '<script type="text/javascript">alert("Debe Diligenciar Todos los campos!")</script>';
     }
 }
-
+    require_once 'control/controlTipoEquipo.php';
+    $tipoEquipo = new controlTipoEquipo();
+    $tipos = $tipoEquipo->consultarTipoEquipo();
 
 ?>
 <!DOCTYPE html>
@@ -95,11 +97,12 @@ if(isset($_POST['enviar'])){
         <fieldset class="contenedor seccion-equipo">
             <legend>Equipos</legend>
             <label for="Tp">Tipo Equipo:</label>
+           
             <select name="tp" id="tp">
                 <option value="" disabled selected>-- Seleccione --</option>
-                <option value="TC25">TC25</option>
-                <!-- <option value="ZQ110">ZQ110</option>
-                <option value="CELULAR">CELULAR</option> -->
+                <?php foreach($tipos as $tipo):?>
+                <option value="<?php echo $tipo->tipo?>"><?php echo $tipo->tipo?></option>
+                <?php endforeach;?>
             </select>
             <label for="imei">IMEI:</label>
             <input type="text" id="imei" name="imei" placeholder="IMEI EQUIPO...">
