@@ -15,7 +15,7 @@ Class ControlEnvioMantenimiento{
     }
     public function registroEnvioMantenimiento($mantenimiento){
         try{
-            $sql = 'insert into enviomt (tipo_equipo, imei, serial, sedeE, fecha, empresa, ruta, responsable, descripcion) values (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+            $sql = 'insert into enviomt (tipo_equipo, imei, serial, sedeE, fecha, empresa, ruta, responsable, descripcion, estado) values (?, ?, ?, ?, ?, ?, ?, ?, ?, 1)';
             $prep = $this->cnx->prepare($sql);
             $prep->execute([
                 $mantenimiento->GetTipoEquipo(),

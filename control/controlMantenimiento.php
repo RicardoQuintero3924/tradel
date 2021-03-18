@@ -32,7 +32,7 @@ class controlMantenimiento{
 
     public function consultaImei(){
         try{
-            $sql = "SELECT imei FROM enviomt";
+            $sql = "SELECT imei FROM enviomt WHERE estado = 1";
             $prep = $this->cnx->prepare($sql);
             $prep->execute();
             $imeis= $prep->fetchAll(PDO::FETCH_OBJ);   
