@@ -93,11 +93,10 @@ $registro = $imeis->consultaImei();
             <input type="text" id="caso" name="caso" placeholder="CASO...">
             <label for="nroFactura">Numero factura:</label>
             <input type="text" id="nroFactura" name="nroFactura" placeholder="NUMERO FACTURA">
-            <label for="estado[]">Estado:</label>
+            <!-- <label for="estado[]">Estado:</label>
             <div class="aplicaciones">
                 <label for="estado">Enviado:</label><input type="checkbox" id="enviado" value="enviado" name="estado[]" class="ehs">
-                <label for="estado" class="cotizacion">Cerrado:</label><input type="checkbox" id="cerrado" value="cerrado" name="estado[]" class="ehs">
-            </div>
+            </div> -->
             <label for="descripcion">Descripcion:</label>
             <textarea name="descripcion" id="descripcion"></textarea>
 

@@ -209,7 +209,9 @@ input:not([type="submit"]) {
     justify-content: space-between;
     align-items: center;
     padding: 0;
+    position: absolute;
 }
+
 
 .ehs {
     width: auto;
@@ -217,6 +219,8 @@ input:not([type="submit"]) {
     margin-right: 40px;
     margin-left: 10px;
     align-items: center;
+    position: relative;
+    right: 10rem;
 }
 
 .estado {
