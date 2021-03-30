@@ -21,7 +21,7 @@
             <nav class="menu">
                 <a href="equipos.php">Equipos</a>
                 <a href="envioMantenimiento.php">Mantenimiento</a>
-                <a href="siniestro.php">Siniestros</a>
+                <a href="vSiniestroRobo.php">Siniestros</a>
                 <a href="info_soporte.php">Info-Soporte</a>
                 <a href="administracion.php">Administrador</a>
             </nav>
