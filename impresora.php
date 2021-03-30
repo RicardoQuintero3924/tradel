@@ -42,9 +42,13 @@
             $impresoraControl->registroImpresora($impresora);
             echo '<script type="text/javascript"> alert("Registro Generado con Exito") </script>';
         }
-
+      
     }
-
+      //consultando el tipo de impresora para llevarlo al select
+      require_once 'control/controlImpresora.php';
+      $controlImpresora = new controlImpresora();
+      $tipo = $controlImpresora->consultaTImpresora();
+      
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -78,9 +82,9 @@
             <label for="tImpresora">Tipo Impresora:</label>
             <select name="tImpresora" id="tImpresora" >
                 <option value="" disabled selected>Seleccione</option>
-                <option value="ZQ110">ZQ110</option>
-                <option value="WOOSIM">WOOSIM</option>
-                <option value="MZ220">MZ220</option>
+                <?php foreach($tipo as $im): ?>
+                <option value="<?php echo $im->tipo ?>"><?php echo $im->tipo ?></option>
+                <?php endforeach;?>
             </select>
             <label for="serial">serial:</label>
             <input type="text" id="serial" name="serial" placeholder="Serial...">

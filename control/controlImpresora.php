@@ -28,5 +28,17 @@ class controlImpresora{
             die($ex->getMessage());
         }
     }
+
+    public function consultaTImpresora(){
+       try{
+        $sql = 'SELECT tipo FROM tipoimpresora';
+        $prep = $this->cnx->prepare($sql);
+        $prep->execute();
+        $tipo = $prep->fetchAll(PDO::FETCH_OBJ);
+       }catch(PDOException $ex){
+        die($ex->getMessage());
+       }
+        return $tipo;
+    }
     
 }
