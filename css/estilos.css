@@ -84,26 +84,42 @@ h1 {
 
 
 /** NAVEGACION */
-
-.menu {
+.menu ul{
     display: flex;
-    justify-content: space-between;
-    font-family: var(--fuente);
-    font-size: 1.8rem;
+    list-style: none;
 }
 
-.menu a {
-    text-decoration: none;
-    color: var(--letra);
-    z-index: 2;
+.menu ul ul{
+    display: none;
 }
 
-nav.menu a:hover {
-    background-color: var(--color);
-    border-bottom: 1px solid var(--letra);
+.menu a{
+   display: block;
+   padding: 5px;
+   color: black;
+   font-weight: bold;
+   text-decoration: none;
+   text-transform: uppercase;
+   font-size: 1rem;
+   z-index: 2;
 }
-
-
+.menu ul li i{
+    font-size: 1rem;
+    margin-left: 10px;
+}
+.menu a i{
+    display: inline;
+    margin-top: auto;   
+}    
+.menu a:hover{
+    border-bottom: 1px solid black;
+}
+.menu ul li:hover ul{
+    display: block;
+    position: absolute;
+    background: rgba(146, 144, 144, 0.5);
+    z-index: 3;
+   }
 /** IMAGEN TRADEL*/
 
 .seccion-imagen {
@@ -113,7 +129,7 @@ nav.menu a:hover {
 .seccion-imagen img {
     width: 100%;
     margin: 0 auto;
-    margin-top: 90px;
+    /* margin-top: 90px; */
     max-width: 100%;
     border: 2px solid var(--letra);
     padding: 30px;
@@ -209,7 +225,12 @@ input:not([type="submit"]) {
     justify-content: space-between;
     align-items: center;
     padding: 0;
-    position: absolute;
+    margin-left: 5rem;
+}
+.aplicaciones input{
+    padding-top: 1rem;
+    margin-top: 2rem;
+    margin-left: 1rem;
 }
 
 

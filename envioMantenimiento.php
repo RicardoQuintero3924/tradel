@@ -102,12 +102,43 @@
                 <h1>Equipos Mantenimiento</h1>
             </div>
         </div>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li><a href="paginaPrincipal.php"><i class="fas fa-home"></i></a></li>
+                    <li class="anchor"><a href="">Registro<i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li class="submenu"><a href="equipos.php">Registro Equipo</a></li>
+                            <li class="submenu"><a href="impresora.php">Registro Impresora</a></li>
+                            <li class="submenu"><a href="asignacion.php">Asignación Equipos</a></li>
+                            <li><a href="comodato.php">Comodato</a></li>
+                        </ul>
+                    </li>
+                    <li> <a href="">Control<i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="envioMantenimiento.php">Envió Mantenimiento</a></li>
+                            <li><a href="mantenimiento.php">Registro Mantenimiento</a></li>
+                            <li><a href="mantenimientoCierre.php">Cierre Mantenimiento</a></li>
+                            <li><a href="vSiniestroRobo.php">Siniestro</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li><a href="">Reportes<i class="fas fa-angle-down"></i></a>
+                        <ul>
+                            <li><a href="reporteSura.php">Reporte Aseguradora</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="info_soporte.php">Info-Soporte</a></li>
+
+                </ul>
+            </nav>
+        </div>
     </header>
-    <nav class="icono contenedor">
+    <!-- <nav class="icono contenedor">
         <a href="paginaPrincipal.php"><i class="far fa-hand-point-left"></i></a>
         <a href="mantenimiento.php"><i class="fas fa-folder"></i></a>
         <a href="#"><i class="fas fa-search"></i></a>
-    </nav>
+    </nav> -->
     <form method="POST" class="contenedor envio">
         <fieldset class="envio">
             <legend>Envio Equipos Mantenimiento</legend>
