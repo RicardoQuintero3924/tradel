@@ -437,3 +437,33 @@ textarea {
     color: var(--letra);
     font-size: 2rem; 
 }
+
+/** Informes y Consultas **/
+
+.informe{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    font-family: var(--fuente);
+    color: var(--letra);   
+    display: flex;
+    height: 100%;
+    margin-bottom: 3rem;
+}
+.informe th{
+    justify-content: space-between;   
+}
+.celda{
+    
+}
+.celda th{
+    text-align: right;
+    padding-left: 3rem;
+    padding-right: 2rem;
+    border-bottom: 1px solid var(--colorCorreo);   
+}
+
+.fila td{
+    border-bottom: 1px solid var(--colorCorreo);
+    padding-top: 1.3rem;
+}

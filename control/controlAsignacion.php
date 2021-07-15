@@ -32,5 +32,18 @@ class controlAsignacion{
             die($ex->getMessage());
         }
     }
+
+    public function consultaAsignados(){
+        try{
+            $sql = 'SELECT nroComodato, imei, serial, nombreR, cedula, ruta FROM asignacion';
+            $prep = $this->cnx->prepare($sql);
+            $prep->execute();
+            $asignados = $prep->fetchAll(PDO::FETCH_OBJ);
+        }
+        catch(PDOException $ex){
+            die($ex->getMessage());
+        }
+        return $asignados;
+    }
     
 }

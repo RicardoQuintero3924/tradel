@@ -38,7 +38,15 @@ class controlEquipo{
     }
 
     public function consultaTodos(){
-        
+        try{
+        $sql = 'Select t_equipo, imei, serial, nro_sim, ciudad, disponible From equipo';
+        $prep = $this->cnx->prepare($sql);
+        $prep->execute();
+        $equipos = $prep->fetchAll(PDO::FETCH_OBJ);
+        }catch(PDOException $ex){
+            die($ex->getMessage());
+        }
+        return $equipos;    
     }
 
 }

@@ -81,7 +81,6 @@ if(isset($_POST['enviar'])){
 </head>
 
 <body>
-
     <header class="contenedor">
         <div class="barra contenedor">
             <div class="titulo">

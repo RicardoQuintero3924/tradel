@@ -79,4 +79,16 @@ class controlMantenimiento{
             return false;
         }
     }
+    public function consultaSoportes(){
+        try{
+            $sql='SELECT imei, caso, costo, estado FROM mantenimiento';
+            $prep = $this->cnx->prepare($sql);
+            $prep->execute();
+            $casos = $prep->fetchAll(PDO::FETCH_OBJ);
+        }
+        catch(PDOException $ex){
+            die($ex->getMessage());
+        }
+        return $casos;
+    }
 }
