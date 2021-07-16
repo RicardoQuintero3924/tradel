@@ -1,4 +1,10 @@
 <?php
+require_once 'control/controlEquipo.php';
+require_once 'control/controlImpresora.php';
+$controlEquipo = new controlEquipo();
+$equipo = $controlEquipo->consultaDisponible();
+$controlImpresora = new controlImpresora();
+$print = $controlImpresora->consultaDisponible();
 $errores = '';
 
 if (isset($_POST['enviar'])) {
@@ -51,14 +57,24 @@ if (isset($_POST['enviar'])) {
     } else {
         $errores .= 'Ingrese La Ruta Responsable de los Equipos';
     }
-
+    $activo = true;
+    $disponible = 0;
     if (!$errores) {
         require_once 'modelo/asignacion.php';
+        require_once 'modelo/actualizaDE.php';
+        require_once 'modelo/actualizaDI.php';
         require_once 'control/controlAsignacion.php';
-
-        $asignacion = new asignacion($nroComodato, $imei, $serial, $nombre, $cedula, $ruta, $observaciones);
+        require_once 'control/controlEquipo.php';
+        require_once 'control/controlImpresora.php';
+        $estado = new actualizaEDisponible($disponible, $imei);
+        $estadoI = new actualizaIDisponible($disponible, $serial);
+        $asignacion = new asignacion($nroComodato, $imei, $serial, $nombre, $cedula, $ruta, $activo, $observaciones);
         $controlAsignacion = new controlAsignacion();
         $controlAsignacion->registroAsignacion($asignacion);
+        $controlEquipo = new controlEquipo();
+        $controlEquipo->actualizarDisponible($estado);
+        $controlImpresora = new controlImpresora();
+        $controlImpresora->actualizarDisponible($estadoI);
         echo '<script type="text/javascript"> alert("Asigancion Realizada con Exito")</script>';
     } else {
         echo '<script type="text/javascript"> alert("POR FAVOR INGRESAR BIEN LA INFORMACION EN LOS CAMPOS OBLIGATORIOS")</script>';
@@ -78,7 +94,6 @@ if (isset($_POST['enviar'])) {
     <title>Zebra Tradel</title>
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
-
 <body>
 <div class="contenedor">
     <header >
@@ -130,9 +145,24 @@ if (isset($_POST['enviar'])) {
             <label for="nComodato">Número Comodato:</label>
             <input type="text" id="nComodato" name="nroComodato" placeholder="Número Comodato...">
             <label for="imei">Imei equipo:</label>
-            <input type="text" id="imei" name="imei" placeholder="IMEI Equipo...">
+            <select name="imei" id="imei">    
+            <option value="" disabled selected>-- Seleccione --</option>
+                <?php foreach($equipo as $equi):?>
+                    <?= $dispo = $equi->disponible; 
+            if($dispo == 1) {?>
+                       <option value="<?php echo $equi->imei?>"><?php echo $equi->t_equipo .' - '. $equi->imei ?></option>
+                <?php }
+                endforeach;?>
+            </select>
             <label for="serial">serial impresora:</label>
-            <input type="text" id="serial" name="serial" placeholder="Serial Impresora...">
+            <select name="serial" id="serial">
+            <option value="" disabled selected>-- Seleccione --</option>
+                <?php foreach($print as $prin): ?>
+                    <?= $disp = $prin->disponible;
+                    if($disp == 1){?>
+                        <option value="<?php echo $prin->serial ?>"><?php echo $prin->tipo_impresora . ' - '. $prin->serial ?></option>
+                    <?php } endforeach;?>
+            </select>
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" placeholder="Nombre Responsable...">
             <label for="cedula">Cedula:</label>

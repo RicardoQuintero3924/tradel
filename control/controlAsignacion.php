@@ -16,7 +16,7 @@ class controlAsignacion{
 
     public function registroAsignacion($asignacion){
         try{
-            $sql = 'Insert Into asignacion (nroComodato, imei, serial, nombreR, cedula, ruta, observaciones) values (?, ?, ?, ?, ?, ?, ?)';
+            $sql = 'Insert Into asignacion (nroComodato, imei, serial, nombreR, cedula, ruta, activo, observaciones) values (?, ?, ?, ?, ?, ?, ?, ?)';
             $prep = $this->cnx->prepare($sql);
             $prep->execute([
                 $asignacion->GetNroComodato(),
@@ -25,6 +25,7 @@ class controlAsignacion{
                 $asignacion->GetNombre(),
                 $asignacion->GetCedula(),
                 $asignacion->GetRuta(),
+                $asignacion->GetActivo(),
                 $asignacion->GetObservaciones()
             ]);
         }
@@ -35,7 +36,7 @@ class controlAsignacion{
 
     public function consultaAsignados(){
         try{
-            $sql = 'SELECT nroComodato, imei, serial, nombreR, cedula, ruta FROM asignacion';
+            $sql = 'SELECT nroComodato, imei, serial, nombreR, cedula, ruta, activo FROM asignacion';
             $prep = $this->cnx->prepare($sql);
             $prep->execute();
             $asignados = $prep->fetchAll(PDO::FETCH_OBJ);

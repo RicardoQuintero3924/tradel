@@ -7,16 +7,18 @@
         private $nombre;
         private $cedula;
         private $ruta;
+        private $activo;
         private $observaciones;
 
 
-        public function __construct($nroComodato, $imei, $serial, $nombre, $cedula, $ruta, $observaciones){
+        public function __construct($nroComodato, $imei, $serial, $nombre, $cedula, $ruta, $activo, $observaciones){
             $this->nroComodato = $nroComodato;
             $this->imei = $imei;
             $this->serial = $serial;
             $this->nombre = $nombre;
             $this->cedula = $cedula;
             $this->ruta = $ruta;
+            $this->activo = $activo;
             $this->observaciones = $observaciones;
         }
 
@@ -55,6 +57,12 @@
         }
         public function SetRuta($ruta){
             $this->ruta = $ruta;
+        }
+        public function GetActivo(){
+            return $this->activo;
+        }
+        public function SetActivo($activo){
+            $this->activo = $activo;
         }
         public function GetObservaciones(){
             return $this->observaciones;

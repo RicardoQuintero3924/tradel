@@ -65,6 +65,7 @@ $asignacion = $controlAsignación->consultaAsignados();
                 <th>Nombre Responsable</th>
                 <th>Cedula</th>
                 <th>Ruta</th>
+                <th>Activo</th>
             </tr>
             <?php foreach ($asignacion as $asig): ?>
             <tr class="fila">
@@ -74,6 +75,7 @@ $asignacion = $controlAsignación->consultaAsignados();
                 <td><?= $asig->nombreR ?></td>
                 <td><?= $asig->cedula ?></td>
                 <td><?= $asig->ruta?></td>
+                <td><?= $asig->activo ?  'SI' : 'NO' ?></td>
             </tr>
             <?php endforeach;?>
         </table>

@@ -31,13 +31,13 @@ if (isset($_POST['enviar'])) {
     } else {
         $errores .= 'Ingrese observaciones del equipo';
     }
-
+    $disponible = 1;
 
     if (!$errores) {
         require_once 'modelo/mImpresora.php';
         require_once 'control/controlImpresora.php';
 
-        $impresora = new impresora($tImpresora, $serial, $estado, $observaciones);
+        $impresora = new impresora($tImpresora, $serial, $estado, $disponible, $observaciones);
         $impresoraControl = new controlImpresora();
         $impresoraControl->registroImpresora($impresora);
         echo '<script type="text/javascript"> alert("Registro Generado con Exito") </script>';

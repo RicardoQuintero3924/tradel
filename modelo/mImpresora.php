@@ -4,12 +4,14 @@ class impresora{
     private $tImpresora;
     private $serial;
     private $estado;
+    private $disponible;
     private $observaciones;
 
-    public function __construct($tImpresora, $serial, $estado, $observaciones){
+    public function __construct($tImpresora, $serial, $estado, $disponible, $observaciones){
         $this->tImpresora = $tImpresora;
         $this->serial = $serial;
         $this->estado = $estado;
+        $this->disponible = $disponible;
         $this->observaciones = $observaciones;
     }
 
@@ -30,6 +32,12 @@ class impresora{
     }
     public function SetEstado($estado){
         $this->estado = $estado;
+    }
+    public function GetDisponible(){
+        return $this->disponible;
+    }
+    public function SetDisponible($disponible){
+        $this->disponible = $disponible;
     }
     public function GetObservaciones(){
         return $this->observaciones;
