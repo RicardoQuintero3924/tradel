@@ -81,7 +81,7 @@ class controlMantenimiento{
     }
     public function consultaSoportes(){
         try{
-            $sql='SELECT imei, caso, costo, estado FROM mantenimiento';
+            $sql="SELECT imei, caso, costo, estado FROM mantenimiento WHERE estado = 'enviado'";
             $prep = $this->cnx->prepare($sql);
             $prep->execute();
             $casos = $prep->fetchAll(PDO::FETCH_OBJ);

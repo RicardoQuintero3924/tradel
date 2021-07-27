@@ -1,12 +1,16 @@
 <?php 
+require_once 'modelo/actualizaDE.php';
 require_once 'modelo/actualizarMantenimiento.php';
 require_once 'control/controlMantenimiento.php';
+require_once 'control/controlEquipo.php';
 $controlMantenimiento = new controlMantenimiento();
 $caso = $controlMantenimiento->consultaCasos();
-
-
+$controlEquipo = new controlEquipo();
+$status = null;
+$estado= null;
 $errores = "";
 if(isset($_POST['actualizar'])){
+    $im = $_POST['imei'];
     $estado = (isset($_POST['estado'])) ? implode(', ', $_POST['estado']) : '';
     $descripcion = $_POST['descripcion'];
     $nroFactura = $_POST['factura'];
@@ -21,13 +25,23 @@ if(isset($_POST['actualizar'])){
     }else{
         $errores .= 'Debe registrar el numero de la factura';
     }
+    if($estado == "cerrado M"){
+        $dispo = 1;
+    }else{
+        $dispo = 0;
+    }
+    $status = new actualizaEDisponible($dispo, $im);
+    $controlEquipo->actualizarDisponible($status);
     if(!$errores){
+    
     $actuaMan = new actualizarMantenimiento($nroFactura, $estado, $descripcion, $case);
     $controlMantenimiento->actualizarMantenimiento($actuaMan);
+   
     echo '<script type="text/javascript"> alert("Registro Actualizado con Exito!")</script>';
     }else{
         echo '<script type="text/javascript"> alert("Registro Erroneo!")</script>';
     }
+    
 }
 
 ?>
@@ -127,9 +141,9 @@ if(isset($_POST['actualizar'])){
             </div>
         </fieldset>
         <input type="submit" value="actualizar" name="actualizar" class="boton">
+   <?php 
+    endforeach; }?> 
     </form>
-   
-    <?php endforeach; }?> 
     <footer class="contenedor">
         <div class="footer">
             <p class="copyright">Todos los Derechos Reservados &copy; </p>

@@ -35,7 +35,7 @@ Class ControlEnvioMantenimiento{
 
     public function ConsultaTodo(){
         try{
-            $sql = 'Select tipo_equipo, imei, serial ,ruta, sedeE, fecha  From enviomt';
+            $sql = "Select tipo_equipo, imei, serial ,ruta, sedeE, fecha  From enviomt";
             $prep = $this->cnx->prepare($sql);
             $prep->execute();
             $casos = $prep->fetchAll(PDO::FETCH_OBJ);
