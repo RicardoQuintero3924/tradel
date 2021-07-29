@@ -3,6 +3,7 @@ $errores = '';
 if (isset($_POST['enviar'])) {
     $tImpresora = $_POST['tImpresora'];
     $serial = $_POST['serial'];
+    $ciudad = $_POST['ciudad'];
     $estado = $_POST['estado'];
     $observaciones = $_POST['observaciones'];
 
@@ -24,6 +25,13 @@ if (isset($_POST['enviar'])) {
     } else {
         $errores .= 'Ingrese El Estado Del Equipo';
     }
+    //Validando Ciudad
+    if(!empty($ciudad)){
+        $ciudad = trim($ciudad);
+        $ciudad = filter_var($ciudad, FILTER_SANITIZE_STRING);
+    }else{
+        $errores .= 'Ingrese la ciudad Del Equipo';
+    }
     //validando Observaciones
     if (!empty($observaciones)) {
         $observaciones = trim($observaciones);
@@ -37,7 +45,7 @@ if (isset($_POST['enviar'])) {
         require_once 'modelo/mImpresora.php';
         require_once 'control/controlImpresora.php';
 
-        $impresora = new impresora($tImpresora, $serial, $estado, $disponible, $observaciones);
+        $impresora = new impresora($tImpresora, $serial, $estado, $ciudad, $disponible, $observaciones);
         $impresoraControl = new controlImpresora();
         $impresoraControl->registroImpresora($impresora);
         echo '<script type="text/javascript"> alert("Registro Generado con Exito") </script>';
@@ -121,6 +129,8 @@ $tipo = $controlImpresora->consultaTImpresora();
                 <input type="text" id="serial" name="serial" placeholder="Serial...">
                 <label for="estado">Estado:</label>
                 <input type="text" id="estado" name="estado" placeholder="Estado...">
+                <label for="ciudad">Ciudad:</label>
+                <input type="text" id="ciudad" name="ciudad" placeholder="Ciudad...">
                 <label for="observacones">observaciones:</label>
                 <textarea name="observaciones" id="observaciones"></textarea>
                 <input type="submit" value="enviar" name="enviar" class="boton">

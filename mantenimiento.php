@@ -2,6 +2,7 @@
 $errores = '';
 if(isset($_POST['btn_enviar'])){
     $imei = $_POST['imei'];
+    $tequipo = $_POST['tequipo'];
     $costo = $_POST['costo'];
     $caso = $_POST['caso'];
     $estado = (isset($_POST['estado'])) ? implode(', ', $_POST['estado']) : '';
@@ -38,7 +39,7 @@ if(isset($_POST['btn_enviar'])){
        $estado = 'enviado'; 
        require_once 'modelo/mMantenimiento.php';
        require_once 'control/controlMantenimiento.php';
-       $mantenimiento = new Mantenimiento($imei, $costo, $caso, $estado, $descripcion, $nroFactura );
+       $mantenimiento = new Mantenimiento($imei, $tequipo, $costo, $caso, $estado, $descripcion, $nroFactura );
        $controlMantenimiento = new controlMantenimiento();
        $controlMantenimiento->registroMantenimiento($mantenimiento);
        echo '<script type="text/javascript"> alert("Registro Almacenado con Exito!")</script>';
@@ -119,6 +120,12 @@ $registro = $imeis->consultaImei();
                 <?php foreach($registro as $imei):?>
                 <option value="<?php echo $imei->imei ?>"><?php echo $imei->imei ?></option>
                 <?php endforeach ?>   
+            </select>
+            <label for="tequipo">Tipo Equipo:</label>
+            <select name="tequipo" id="tequipo">
+                    <option value="" disabled selected>--Seleccione--</option>
+                    <option value="IMPRESORA">IMPRESORA</option>
+                    <option value="EQUIPO">EQUIPO</option>
             </select>
             <label for="costo">COSTO:</label>
             <input type="text" id="costo" name="costo" placeholder="COSTO MANTENIMIENTO...">

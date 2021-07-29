@@ -14,10 +14,11 @@ class controlMantenimiento{
 
     public function registroMantenimiento($mantenimiento){
         try{
-            $sql = 'Insert into mantenimiento (imei, costo, caso, estado, descripcion, nroFactura) values (?, ?, ?, ?, ?, ?)';
+            $sql = 'Insert into mantenimiento (imei, tequipo, costo, caso, estado, descripcion, nroFactura) values (?, ?, ?, ?, ?, ?, ?)';
             $prep = $this->cnx->prepare($sql);
             $prep->execute([
                 $mantenimiento->GetImei(),
+                $mantenimiento->GetTEquipo(),
                 $mantenimiento->GetCosto(),
                 $mantenimiento->GetCaso(),
                 $mantenimiento->GetEstado(),

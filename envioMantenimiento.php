@@ -155,7 +155,7 @@
             <label for="sedeE">sede Envio:</label>
             <input type="text" id="sedeE" name="sedeE" placeholder="SEDE A LA QUE SE ENVIO EL EQUIPO">
             <label for="fechaE">fecha envio:</label>
-            <input type="text" id="fechaE" name="fechaE" placeholder="DD-MM-AAAA">
+            <input type="date" id="fechaE" name="fechaE" placeholder="DD-MM-AAAA">
             <label for="empresa">EMPRESA:</label>
             <input type="text" id="empresa" name="empresa" placeholder="EMPRESA...">
             <label for="ruta">Ruta:</label>

@@ -1,16 +1,21 @@
 <?php 
 require_once 'modelo/actualizaDE.php';
+require_once 'modelo/actualizaDI.php';
 require_once 'modelo/actualizarMantenimiento.php';
 require_once 'control/controlMantenimiento.php';
 require_once 'control/controlEquipo.php';
+require_once 'control/controlImpresora.php';
 $controlMantenimiento = new controlMantenimiento();
 $caso = $controlMantenimiento->consultaCasos();
 $controlEquipo = new controlEquipo();
+$controlImpresora = new controlImpresora();
 $status = null;
+$statusI = null;
 $estado= null;
 $errores = "";
 if(isset($_POST['actualizar'])){
     $im = $_POST['imei'];
+    $tequipo = $_POST['tequipo'];
     $estado = (isset($_POST['estado'])) ? implode(', ', $_POST['estado']) : '';
     $descripcion = $_POST['descripcion'];
     $nroFactura = $_POST['factura'];
@@ -30,8 +35,14 @@ if(isset($_POST['actualizar'])){
     }else{
         $dispo = 0;
     }
+    $statusI = new actualizaIDisponible($dispo, $im);
     $status = new actualizaEDisponible($dispo, $im);
-    $controlEquipo->actualizarDisponible($status);
+    if($tequipo == 'IMPRESORA'){
+        $controlImpresora->actualizarDisponible($statusI);
+    }else{
+        $controlEquipo->actualizarDisponible($status);
+    }
+    
     if(!$errores){
     
     $actuaMan = new actualizarMantenimiento($nroFactura, $estado, $descripcion, $case);
@@ -43,7 +54,7 @@ if(isset($_POST['actualizar'])){
     }
     
 }
-
+var_dump($statusI);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -126,6 +137,8 @@ if(isset($_POST['actualizar'])){
             <legend>Mantenimiento Cierre</legend>
             <label for="imei">IMEI:</label>
             <input type="text" id="imei" name="imei" placeholder="IMEI EQUIPO..." value="<?php echo $inf->imei ?>">
+            <label for="tequipo">Tipo Equipo:</label>
+            <input type="text" id="tequipo" name="tequipo" value="<?php echo $inf->tequipo ?>">
             <label for="costo">COSTO:</label>
             <input type="text" id="costo" name="costo" placeholder="COSTO MANTENIMIENTO..." value="<?php echo $inf->costo ?>">
             <label for="factura">Nro factura:</label>

@@ -2,15 +2,17 @@
 
 class Mantenimiento{
     private $imei;
+    private $tequipo;
     private $costo;
     private $caso;
     private $estado;
     private $descripcion;
     private $nroFactura;
 
-    public function __construct($imei ,$costo, $caso, $estado, $descripcion, $nroFactura
+    public function __construct($imei, $tequipo ,$costo, $caso, $estado, $descripcion, $nroFactura
     ){
         $this->imei = $imei;
+        $this->tequipo = $tequipo;
         $this->costo = $costo;
         $this->caso = $caso;
         $this->estado = $estado;
@@ -23,6 +25,12 @@ class Mantenimiento{
     }
     public function SetImei($imei){
         $this->imei = $imei;
+    }
+    public function GetTEquipo(){
+        return $this->tequipo;
+    }
+    public function SetTEquipo($tequipo){
+        $this->tequipo = $tequipo;
     }
     public function GetCosto(){
         return $this->costo;

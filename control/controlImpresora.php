@@ -15,12 +15,13 @@ class controlImpresora{
     }
     public function registroImpresora($impresora){
         try{
-            $sql= 'Insert Into impresora (tipo_impresora, serial, estado, disponible, observaciones) values (?, ?, ?, ?, ?)';
+            $sql= 'Insert Into impresora (tipo_impresora, serial, estado, ciudad, disponible, observaciones) values (?, ?, ?, ?, ?, ?)';
             $prep = $this->cnx->prepare($sql);
             $prep->execute([
                 $impresora->GetTImpresora(),
                 $impresora->GetSerial(),
                 $impresora->Getestado(),
+                $impresora->GetCiudad(),
                 $impresora->GetDisponible(),
                 $impresora->GetObservaciones()
             ]);
@@ -44,7 +45,7 @@ class controlImpresora{
     
     public function consultaDisponible(){
         try{
-            $sql = 'Select tipo_impresora, serial, disponible from impresora';
+            $sql = 'Select tipo_impresora, serial, disponible, estado, ciudad from impresora';
             $prep = $this->cnx->prepare($sql);
             $prep->execute();
             $print = $prep->fetchAll(PDO::FETCH_OBJ);
