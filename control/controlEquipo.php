@@ -15,13 +15,14 @@ class controlEquipo{
     }
     public function registroEquipo($equipo){
        try{
-        $sql= 'Insert into equipo (t_equipo, imei, serial, nro_sim, ciudad, ehs, celuweb, disponible, cargador, comodato, backup) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $sql= 'Insert into equipo (t_equipo, imei, serial, nro_sim, ncargador, ciudad, ehs, celuweb, disponible, cargador, comodato, backup) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $prep = $this->cnx->prepare($sql);
         $prep->execute([
             $equipo->GetTEquipo(),
             $equipo->GetImei(),
             $equipo->GetSerial(),
             $equipo->GetNSim(),
+            $equipo->GetnCargador(),
             $equipo->GetCiudad(),
             $equipo->GetEhs(),
             $equipo->GetCeluweb(),

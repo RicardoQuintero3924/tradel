@@ -92,4 +92,18 @@ class controlMantenimiento{
         }
         return $casos;
     }
+
+    public function actualizaEstado($datos){
+        try{
+            $sql="UPDATE enviomt SET estado = ? WHERE imei = ?";
+            $prep = $this->cnx->prepare($sql);
+            $prep->execute([
+                $datos->GetEstado(),
+                $datos->GetImei()
+            ]);
+        }catch(PDOException $ex){
+            return die($ex->getMessage());
+        }
+
+    }
 }

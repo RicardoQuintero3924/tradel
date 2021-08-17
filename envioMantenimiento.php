@@ -1,84 +1,105 @@
 <?php
- $errores = "";
+require_once 'control/controlTipoEquipo.php';
+$tipoEquipos = new controlTipoEquipo();
+$tipos = $tipoEquipos->consultarTipoEquipo();
+$errores = "";
 
- if(isset($_POST['enviar'])){
-     $tipoEquipo = $_POST['tipoEquipo'];
-     $imei = $_POST['imei'];
-     $serial = $_POST['serial'];
-     $sedeE = $_POST['sedeE'];
-     $fechaE = $_POST['fechaE'];
-     $empresa = $_POST['empresa'];
-     $ruta = $_POST['ruta'];
-     $responsableE = $_POST['responsableE'];
-     $observaciones = $_POST['observaciones'];
+if (isset($_POST['enviar'])) {
+    $tipoEquipo = $_POST['tipoEquipo'];
+    $imei = $_POST['imei'];
+    $serial = $_POST['serial'];
+    $sedeE = $_POST['sedeE'];
+    $fechaE = $_POST['fechaE'];
+    $empresa = $_POST['empresa'];
+    $ruta = $_POST['ruta'];
+    $responsableE = $_POST['responsableE'];
+    $observaciones = $_POST['observaciones'];
 
-    if(empty($tipoEquipo)){
+    if (empty($tipoEquipo)) {
         $errorres .= 'Seleccionar el Tipo de Equipo';
     }
 
-     if(!empty($imei)){
-         $imei = trim($imei);
-         $imei = filter_var($imei, FILTER_SANITIZE_STRING);
-     }else{
-         $errores .= 'Debe Diligenciar el Imei del Equipo';
-     }
+    if (!empty($imei)) {
+        $imei = trim($imei);
+        $imei = filter_var($imei, FILTER_SANITIZE_STRING);
+    } else {
+        $errores .= 'Debe Diligenciar el Imei del Equipo';
+    }
 
-     if(!empty($serial)){
-         $serial = trim($serial);
-         $serial = filter_var($serial, FILTER_SANITIZE_STRING);
-     }else{
-         $errores .= 'Debe Diligenciar el serial del Equipo';
-     }
-     if(!empty($sedeE)){
-         $sedeE = trim($sedeE);
-         $sedeE = filter_var($sedeE, FILTER_SANITIZE_STRING);
-     }else{
-         $errores .= 'Debe Diligenciar la sede a la que se envia el Equipo';
-     }
-     if(!empty($fechaE)){
-         $fechaE = trim($fechaE);
-         $fechaE = filter_var($fechaE, FILTER_SANITIZE_STRING);
-     }else{
-         $errores .= 'Debe Diligenciar la fecha de envio';
-     }
-     if(!empty($empresa)){
-         $empresa = trim($empresa);
-         $empresa = filter_var($empresa, FILTER_SANITIZE_STRING);
-     }else{
-         $errores .= 'Debe Diligenciar el Campo Empresa';
-     }
-     if(!empty($ruta)){
-         $ruta = trim($ruta);
-         $ruta = filter_var($ruta, FILTER_SANITIZE_STRING);
-     }else{
-         $errores .= 'Debe Diligenciar el Campo Ruta';
-     }
-     if(!empty($responsableE)){
-         $responsableE = trim($responsableE);
-         $responsableE = filter_var($responsableE, FILTER_SANITIZE_STRING);
-     }else{
-         $errores .= 'Dede Diligenciar el Campo Responsable';
-     }
-     if(!empty($observaciones)){
-         $observaciones = trim($observaciones);
-         $observaciones = filter_var($observaciones, FILTER_SANITIZE_STRING);
-     }else{
-         $errores .= 'Por favor Ingrese los Comentarios del Equipo';
-     }
+    if (!empty($serial)) {
+        $serial = trim($serial);
+        $serial = filter_var($serial, FILTER_SANITIZE_STRING);
+    } else {
+        $errores .= 'Debe Diligenciar el serial del Equipo';
+    }
+    if (!empty($sedeE)) {
+        $sedeE = trim($sedeE);
+        $sedeE = filter_var($sedeE, FILTER_SANITIZE_STRING);
+    } else {
+        $errores .= 'Debe Diligenciar la sede a la que se envia el Equipo';
+    }
+    if (!empty($fechaE)) {
+        $fechaE = trim($fechaE);
+        $fechaE = filter_var($fechaE, FILTER_SANITIZE_STRING);
+    } else {
+        $errores .= 'Debe Diligenciar la fecha de envio';
+    }
+    if (!empty($empresa)) {
+        $empresa = trim($empresa);
+        $empresa = filter_var($empresa, FILTER_SANITIZE_STRING);
+    } else {
+        $errores .= 'Debe Diligenciar el Campo Empresa';
+    }
+    if (!empty($ruta)) {
+        $ruta = trim($ruta);
+        $ruta = filter_var($ruta, FILTER_SANITIZE_STRING);
+    } else {
+        $errores .= 'Debe Diligenciar el Campo Ruta';
+    }
+    if (!empty($responsableE)) {
+        $responsableE = trim($responsableE);
+        $responsableE = filter_var($responsableE, FILTER_SANITIZE_STRING);
+    } else {
+        $errores .= 'Dede Diligenciar el Campo Responsable';
+    }
+    if (!empty($observaciones)) {
+        $observaciones = trim($observaciones);
+        $observaciones = filter_var($observaciones, FILTER_SANITIZE_STRING);
+    } else {
+        $errores .= 'Por favor Ingrese los Comentarios del Equipo';
+    }
 
-     if(!$errores){
-         require_once 'modelo/envioMantenimientoM.php';
-         require_once 'control/controlEnvioMantenimiento.php';
-
-         $mantenimiento = new envioMantenimiento($tipoEquipo, $imei, $serial, $sedeE, $fechaE, $empresa, $ruta, $responsableE, $observaciones);
-         $controlEnvio = new ControlEnvioMantenimiento();
-         $controlEnvio->registroEnvioMantenimiento($mantenimiento);
-         echo '<script type="text/javascript">alert("Envío Registrado con Exito!")</script>';
-     }else{
+    if (!$errores) {
+        $dispo = 0;
+        require_once 'modelo/envioMantenimientoM.php';
+        require_once 'control/controlEquipo.php';
+        require_once 'control/controlImpresora.php';
+        require_once 'control/controlEnvioMantenimiento.php';
+        require_once 'modelo/actualizaDE.php';
+        require_once 'modelo/actualizaDI.php';
+        //DEBERA LLEVAR UN FOR PARA QUE REVISE CUAL DE LOS EQUIPOS ES EL QUE DEBE SER ACTUALIZADO 
+        // SE HACE ASI MIENTRAS SE ANEXAN EL RESTO DE EQUIPOS.
+        if ($tipoEquipo == "TC25"){
+            $datos = new actualizaEDisponible($dispo, $imei);
+            $controlEquipo = new controlEquipo();
+            $controlEquipo->actualizarDisponible($datos);
+        }else{
+            $datos = new actualizaIDisponible($dispo, $imei);
+            $controlImpresora = new controlImpresora();
+            $controlImpresora->actualizarDisponible($datos);
+        }
+            
+        $mantenimiento = new envioMantenimiento($tipoEquipo, $imei, $serial, $sedeE, $fechaE, $empresa, $ruta, $responsableE, $observaciones);
+        $controlEnvio = new ControlEnvioMantenimiento();
+        $controlEnvio->registroEnvioMantenimiento($mantenimiento);
+        echo '<script type="text/javascript">alert("Envío Registrado con Exito!")</script>';
+    } else {
         echo '<script type="text/javascript">alert("Error Falta Diligenciar Campos!")</script>';
-     }
-     
- }
+    }
+    
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -92,7 +113,7 @@
     <link rel="stylesheet" href="css/estilos.css">
     <title>Envío Equipo Mantenimiento</title>
     <link rel="shortcut icon" href="favicon.ico" />
-    
+
 </head>
 
 <body>
@@ -120,7 +141,7 @@
                             <li><a href="mantenimiento.php">Registro Mantenimiento</a></li>
                             <li><a href="mantenimientoCierre.php">Cierre Mantenimiento</a></li>
                             <li><a href="vSiniestroRobo.php">Siniestro</a></li>
-                            
+
                         </ul>
                     </li>
                     <li><a href="">Reportes<i class="fas fa-angle-down"></i></a>

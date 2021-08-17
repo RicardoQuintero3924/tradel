@@ -6,6 +6,7 @@ if(isset($_POST['enviar'])){
     $imei = $_POST['imei'];
     $serial = $_POST['serial'];
     $sim = $_POST['sim'];
+    $nCargador = $_POST['ncargador'];
     $ciudad = $_POST['ciudad'];
     $ehs = (isset($_POST['ehs'])) ? : 'false';
     $celuweb = (isset($_POST['celuweb'])) ? : 'false';
@@ -40,6 +41,13 @@ if(isset($_POST['enviar'])){
     }else{
         $errores .= 'Debe Ingresar el numero de SIM';
     }
+    //validando numero cargador
+    if(!empty($nCargador)){
+        $nCargador = trim($nCargador);
+        $nCargador = filter_var($nCargador, FILTER_SANITIZE_STRING);
+    }else{
+        $errores .= 'Debe Ingresar el numero del cargador';
+    }
     //validando ciudad
     if(!empty($ciudad)){
         $ciudad = trim($ciudad);
@@ -51,7 +59,7 @@ if(isset($_POST['enviar'])){
     if(!$errores){
         require_once 'modelo/equipo.php';
         require_once 'control/controlEquipo.php'; 
-        $equipo = new Equipo($tp, $imei, $serial, $sim, $ciudad, $ehs, $celuweb, $disponible, $cargador, $comodato, $backup);
+        $equipo = new Equipo($tp, $imei, $serial, $sim, $nCargador, $ciudad, $ehs, $celuweb, $disponible, $cargador, $comodato, $backup);
         $equipoControl = new controlEquipo();
         $equipoControl->registroEquipo($equipo);
         echo '<script type="text/javascript">alert("Equipo Registrado con Exito!")</script>';        
@@ -141,6 +149,8 @@ if(isset($_POST['enviar'])){
             <input type="text" id="serial" name="serial" placeholder="SERIAL EQUIPO..">
             <label for="sim">Numero Sim:</label>
             <input type="text" id="sim" name="sim" placeholder="NUMERO SIM...">
+            <label for="sim">Numero Cargador:</label>
+            <input type="text" id="ncargador" name="ncargador" placeholder="NUMERO CARGADOR...">
             <label for="ciudad">CIUDAD:</label>
             <input type="text" id="ciudad" name="ciudad" placeholder="CIUDAD...">
             <label for="aplicaciones">Aplicaciones Instaladas:</label>

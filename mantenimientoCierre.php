@@ -54,7 +54,7 @@ if(isset($_POST['actualizar'])){
     }
     
 }
-var_dump($statusI);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

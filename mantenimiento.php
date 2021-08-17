@@ -36,12 +36,16 @@ if(isset($_POST['btn_enviar'])){
     // }
 
     if(!$errores){
+       $state = 0; 
        $estado = 'enviado'; 
        require_once 'modelo/mMantenimiento.php';
+       require_once 'modelo/actualizaMan.php';
        require_once 'control/controlMantenimiento.php';
        $mantenimiento = new Mantenimiento($imei, $tequipo, $costo, $caso, $estado, $descripcion, $nroFactura );
        $controlMantenimiento = new controlMantenimiento();
        $controlMantenimiento->registroMantenimiento($mantenimiento);
+       $datos = new ActualizaMan($state, $imei);
+       $controlMantenimiento->actualizaEstado($datos);
        echo '<script type="text/javascript"> alert("Registro Almacenado con Exito!")</script>';
 
     }else{

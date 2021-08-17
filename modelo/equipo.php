@@ -5,6 +5,7 @@ class equipo{
     private $imei;
     private $serial;
     private $nSim;
+    private $nCargador;
     private $ciudad;
     private $ehs;
     private $celuweb;
@@ -13,11 +14,12 @@ class equipo{
     private $comodato;
     private $backup;
 
-    public function __construct($tEquipo,$imei,$serial,$nSim,$ciudad,$ehs,$celuweb,$disponible,$cargador,$comodato,$backup){
+    public function __construct($tEquipo,$imei,$serial,$nSim,$nCargador,$ciudad,$ehs,$celuweb,$disponible,$cargador,$comodato,$backup){
         $this->tEquipo = $tEquipo;
         $this->imei = $imei;
         $this->serial = $serial;
         $this->nSim = $nSim;
+        $this->nCargador = $nCargador;
         $this->ciudad = $ciudad;
         $this->ehs = $ehs;
         $this->celuweb = $celuweb;
@@ -50,6 +52,12 @@ class equipo{
     public function SetNSim($nSim){
         $this->nSim = $nSim;
     }  
+    public function GetnCargador(){
+        return $this->nCargador;
+    }
+    public function SetnCargados($nCargador){
+        $this->nCargador = $nCargador;
+    }
     public function GetCiudad(){
         return $this->ciudad;
     }
