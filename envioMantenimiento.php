@@ -96,8 +96,9 @@ if (isset($_POST['enviar'])) {
     } else {
         echo '<script type="text/javascript">alert("Error Falta Diligenciar Campos!")</script>';
     }
-    
-
+    require_once 'control/controlTipoEquipo.php';
+    $tipoEquipo = new controlTipoEquipo();
+    $tipos = $tipoEquipo->consultarTipoEquipo();
 }
 
 ?>
@@ -164,10 +165,11 @@ if (isset($_POST['enviar'])) {
         <fieldset class="envio">
             <legend>Envio Equipos Mantenimiento</legend>
             <label for="tipoEquipo">Tipo Equipo:</label>
-            <select name="tipoEquipo" id="tipoEquipo" class="tipoequipo">
+            <select name="tp" id="tp">
                 <option value="" disabled selected>-- Seleccione --</option>
-                <option value="TC25">TC25</option>
-                <option value="ZQ110">ZQ110</option>
+                <?php foreach($tipos as $tipo):?>
+                <option value="<?php echo $tipo->tipo?>"><?php echo $tipo->tipo?></option>
+                <?php endforeach;?>
             </select>
             <label for="imei">IMEI:</label>
             <input type="text" id="imei" name="imei" placeholder="IMEI EQUIPO...">
