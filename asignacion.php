@@ -1,14 +1,24 @@
 <?php
+//LLAMANDO EL CONTROL E INSTANCIANDOLO PARA EL EQUIPO
 require_once 'control/controlEquipo.php';
-require_once 'control/controlImpresora.php';
 $controlEquipo = new controlEquipo();
 $equipo = $controlEquipo->consultaDisponible();
+//-------------------------------------------------
+//LLAMANDO EL CONTROL PARA LA IMPRESORA E INSTANCIANDO
+require_once 'control/controlImpresora.php';
 $controlImpresora = new controlImpresora();
 $print = $controlImpresora->consultaDisponible();
+//--------------------------------------------------
+//LLAMANDO EL CONTROL PARA EL PREFIJO E INSTANCIANDO
+require_once 'control/controlPrefijosComodatos.php';
+$controlPrefijo = new controlPrefijoComodato();
+$prefijos = $controlPrefijo->consultaTodosPrefijos();
+//---------------------------------------------------
+//FALTA PROCESO DE ASIGNACION Y GENERACION DE CONSECUTIVO OJO-------
 $errores = '';
 
 if (isset($_POST['enviar'])) {
-    $nroComodato = $_POST['nroComodato'];
+    // $nroComodato = $_POST['nroComodato'];
     $imei = $_POST['imei'];
     $serial = $_POST['serial'];
     $nombre = $_POST['nombre'];
@@ -16,13 +26,13 @@ if (isset($_POST['enviar'])) {
     $ruta = $_POST['ruta'];
     $observaciones = $_POST['observaciones'];
 
-    if (!empty($nroComodato)) {
-        $nroComodato = trim($nroComodato);
-        $nroComodato = filter_var($nroComodato, FILTER_SANITIZE_STRING);
-    } else {
-        $errores .= 'Por Favor Ingrese El numero de Comodato';
-    }
-
+    // if (!empty($nroComodato)) {
+    //     $nroComodato = trim($nroComodato);
+    //     $nroComodato = filter_var($nroComodato, FILTER_SANITIZE_STRING);
+    // } else {
+    //     $errores .= 'Por Favor Ingrese El numero de Comodato';
+    // }
+    $nroComodato = 0;
     if (!empty($imei)) {
         $imei = trim($imei);
         $imei = filter_var($imei, FILTER_SANITIZE_STRING);
@@ -78,7 +88,7 @@ if (isset($_POST['enviar'])) {
         echo '<script type="text/javascript"> alert("Asigancion Realizada con Exito")</script>';
     } else {
         echo '<script type="text/javascript"> alert("POR FAVOR INGRESAR BIEN LA INFORMACION EN LOS CAMPOS OBLIGATORIOS")</script>';
-    }
+    }   
 }
 ?>
 <!DOCTYPE html>
@@ -142,8 +152,14 @@ if (isset($_POST['enviar'])) {
     <form method="POST">
         <fieldset class="seccion-equipo">
             <legend>Asignación Equipos</legend>
-            <label for="nComodato">Número Comodato:</label>
-            <input type="text" id="nComodato" name="nroComodato" placeholder="Número Comodato...">
+
+            <label for="prefijo">Prefijo:</label>
+            <select name="prefijo" id="prefijo">
+             <option value="" disabled selected>--Seleccione--</option>
+             <?php foreach($prefijos as $prefijo):?>   
+                <option value="<?php echo $prefijo->prefijo ?>"><?php echo $prefijo->prefijo ?></option>
+             <?php endforeach;?>            
+            </select>
             <label for="imei">Imei equipo:</label>
             <select name="imei" id="imei">    
             <option value="" disabled selected>-- Seleccione --</option>
