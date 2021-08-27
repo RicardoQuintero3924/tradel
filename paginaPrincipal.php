@@ -29,7 +29,6 @@
                             <li class="submenu"><a href="equipos.php">Registro Equipo</a></li>
                             <li class="submenu"><a href="impresora.php">Registro Impresora</a></li>
                             <li class="submenu"><a href="asignacion.php">Asignación Equipos</a></li>
-                            <li><a href="comodato.php">Comodato</a></li>
                         </ul>
                     </li>
                     <li> <a href="">Control<i class="fas fa-angle-down"></i></a>

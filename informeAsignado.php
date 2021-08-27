@@ -69,7 +69,7 @@ $asignacion = $controlAsignación->consultaAsignados();
             </tr>
             <?php foreach ($asignacion as $asig): ?>
             <tr class="fila">
-                <td><?= $asig->nroComodato ?></td>
+                <td><a href="comodatoPDF.php?nroComodato=<?= $asig->nroComodato ?>"><?= $asig->nroComodato ?></a></td>
                 <td><?= $asig->imei ?></td>
                 <td><?= $asig->serial ?></td>
                 <td><?= $asig->nombreR ?></td>

@@ -47,4 +47,15 @@ class controlAsignacion{
         return $asignados;
     }
     
+    public function consultaComodato($nroComodato){
+        try{
+            $sql="SELECT nroComodato,imei,serial,nombreR,cedula,ruta FROM asignacion WHERE nroComodato = '$nroComodato' ";
+            $prep = $this->cnx->prepare($sql);
+            $prep->execute();
+            $data = $prep->fetchAll(PDO::FETCH_OBJ);
+        }catch(PDOException $ex){
+            die($ex->getMessage());
+        }
+        return $data;
+    }
 }
