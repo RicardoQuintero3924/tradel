@@ -8,10 +8,15 @@ $comodato = $data->consultaComodato($nroComodato);
 foreach($comodato as $dato):
     $responsable = $dato->nombreR;
     $cedula = $dato->cedula;
+    $equipo = $dato->imei;
+    $impresora = $dato->serial;
+    $ruta = $dato->ruta;
+    $fecha = $dato->fecha;
 endforeach;
 
 $pdf = new FPDF('P','mm','A4');
 $pdf->SetMargins(20,15,20);
+//$pdf->Image('tradel.jpeg',10,8,22,38,'JPEG','images/tradel.jpeg');
 $pdf->AddPage();
 $pdf->SetY(30);
 $pdf->SetFont('Arial','B',12);
@@ -37,8 +42,17 @@ $pdf->SetY($w+10);
 $pdf->Cell(40,5,'Equipo',1,0);
 $pdf->Cell(45,5,'Impresora',1,0);
 $pdf->Cell(45,5,'Ruta',1,0);
-$pdf->Cell(40,5,'Fecha',1,0);
-
+$pdf->Cell(45,5,'Fecha',1,1);
+$pdf->Cell(40,5,$equipo,1,0);
+$pdf->Cell(45,5,$impresora,1,0);
+$pdf->Cell(45,5,$ruta,1,0);
+$pdf->Cell(45,5,$fecha,1,0);
+//--------------------------------------
+$a = $pdf->GetY();
+$pdf->SetY($a+113);
+$pdf->Line(100,250,20,250);
+$pdf->cell(60,10,$responsable,0,1);
+$pdf->Cell(65,10,"Firma Comodatario");
 $pdf->Output();
 
 ?>

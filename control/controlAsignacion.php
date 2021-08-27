@@ -49,7 +49,7 @@ class controlAsignacion{
     
     public function consultaComodato($nroComodato){
         try{
-            $sql="SELECT nroComodato,imei,serial,nombreR,cedula,ruta FROM asignacion WHERE nroComodato = '$nroComodato' ";
+            $sql="SELECT nroComodato,imei,serial,nombreR,cedula,ruta,fecha FROM asignacion WHERE nroComodato = '$nroComodato' ";
             $prep = $this->cnx->prepare($sql);
             $prep->execute();
             $data = $prep->fetchAll(PDO::FETCH_OBJ);
