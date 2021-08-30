@@ -16,9 +16,9 @@ endforeach;
 
 $pdf = new FPDF('P','mm','A4');
 $pdf->SetMargins(20,15,20);
-//$pdf->Image('tradel.jpeg',10,8,22,38,'JPEG','images/tradel.jpeg');
 $pdf->AddPage();
 $pdf->SetY(30);
+$pdf->Image('images/tradel.jpg',170,15,30,30,'jpeg');
 $pdf->SetFont('Arial','B',12);
 $pdf->Cell(40,10, 'Comodato: ',0,0,'c');
 $pdf->Cell(40,10,"$nroComodato",0,1);
