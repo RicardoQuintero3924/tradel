@@ -467,3 +467,13 @@ textarea {
     border-bottom: 1px solid var(--colorCorreo);
     padding-top: 1.3rem;
 }
+/**devolucion Equipos Btn-devolucion**/
+.btn-devolucion{
+  padding: 0.5rem;
+  text-transform: uppercase;
+  color: var(--letra);
+}
+.btn-devolucion:hover{
+    cursor: pointer;
+    -webkit-transform: scale(1.1);
+}

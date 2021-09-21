@@ -58,4 +58,17 @@ class controlAsignacion{
         }
         return $data;
     }
+
+    public function actualizaComodato($nroComodato){
+        try{
+            $sql ="UPDATE asignacion SET activo = 0 WHERE nroComodato = '$nroComodato'";
+            $prep = $this->cnx->prepare($sql);
+            $prep->execute();
+            return true;
+        }catch(PDOException $ex){
+            die($ex->getMessage());
+            return false;
+        }
+    }
+
 }
