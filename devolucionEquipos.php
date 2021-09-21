@@ -68,7 +68,6 @@ $asignacion = $controlAsignación->consultaAsignados();
                 <th>Serial Impresora</th>
                 <th>Nombre Responsable</th>
                 <th>Ruta</th>
-                <th>Devolución</th>
                 <th>PDF</th>
             </tr>
             <?php foreach ($asignacion as $asig) : ?>
@@ -79,7 +78,6 @@ $asignacion = $controlAsignación->consultaAsignados();
                         <td><?= $asig->serial ?></td>
                         <td><?= $asig->nombreR ?></td>
                         <td><?= $asig->ruta ?></td>
-                        <td><input type="submit" name="devolucion" value="devolucion"></td>
                         <td><a href="devolucionPDF.php?nroComodato=<?= $asig->nroComodato?>"><i class="fas fa-file-pdf"></i></a></td>
                 </tr>
             <?php  }  ?>
