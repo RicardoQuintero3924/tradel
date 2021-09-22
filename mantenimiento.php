@@ -1,6 +1,6 @@
 <?php
 $errores = '';
-if(isset($_POST['btn_enviar'])){
+if (isset($_POST['btn_enviar'])) {
     $imei = $_POST['imei'];
     $tequipo = $_POST['tequipo'];
     $costo = $_POST['costo'];
@@ -9,24 +9,24 @@ if(isset($_POST['btn_enviar'])){
     $descripcion = $_POST['descripcion'];
     $nroFactura = $_POST['nroFactura'];
 
-    if(!empty($imei)){
+    if (!empty($imei)) {
         $imei = trim($imei);
         $imei = filter_var($imei, FILTER_SANITIZE_STRING);
-    }else{
+    } else {
         $errores .= 'Ingrese el Imei';
     }
 
-    if(!empty($costo)){
+    if (!empty($costo)) {
         $costo = trim($costo);
         $costo = filter_var($costo, FILTER_SANITIZE_NUMBER_INT);
-    }else{
+    } else {
         $errores .= 'Ingrese el Costo del mantenimiento';
     }
 
-    if(!empty($caso)){
+    if (!empty($caso)) {
         $caso = trim($caso);
         $caso = filter_var($caso, FILTER_SANITIZE_STRING);
-    }else{
+    } else {
         $errores .= 'Ingrese El Numero de Caso';
     }
 
@@ -35,24 +35,23 @@ if(isset($_POST['btn_enviar'])){
     //     $errores .= 'Ingrese el Estado Del Equipo';
     // }
 
-    if(!$errores){
-       $state = 0; 
-       $estado = 'enviado'; 
-       require_once 'modelo/mMantenimiento.php';
-       require_once 'modelo/actualizaMan.php';
-       require_once 'control/controlMantenimiento.php';
-       $mantenimiento = new Mantenimiento($imei, $tequipo, $costo, $caso, $estado, $descripcion, $nroFactura );
-       $controlMantenimiento = new controlMantenimiento();
-       $controlMantenimiento->registroMantenimiento($mantenimiento);
-       $datos = new ActualizaMan($state, $imei);
-       $controlMantenimiento->actualizaEstado($datos);
-       echo '<script type="text/javascript"> alert("Registro Almacenado con Exito!")</script>';
-
-    }else{
+    if (!$errores) {
+        $state = 0;
+        $estado = 'enviado';
+        require_once 'modelo/mMantenimiento.php';
+        require_once 'modelo/actualizaMan.php';
+        require_once 'control/controlMantenimiento.php';
+        $mantenimiento = new Mantenimiento($imei, $tequipo, $costo, $caso, $estado, $descripcion, $nroFactura);
+        $controlMantenimiento = new controlMantenimiento();
+        $controlMantenimiento->registroMantenimiento($mantenimiento);
+        $datos = new ActualizaMan($state, $imei);
+        $controlMantenimiento->actualizaEstado($datos);
+        echo '<script type="text/javascript"> alert("Registro Almacenado con Exito!")</script>';
+    } else {
         echo '<script type="text/javascript"> alert("Ingrese La Informacion de los Campos Obligatorios")</script>';
-    }    
+    }
 }
-require_once 'control/controlMantenimiento.php'; 
+require_once 'control/controlMantenimiento.php';
 $imeis = new controlMantenimiento();
 $registro = $imeis->consultaImei();
 ?>
@@ -79,6 +78,7 @@ $registro = $imeis->consultaImei();
         <div class="menu">
             <nav>
                 <ul>
+                    <li><a href="paginaPrincipal.php"><i class="fas fa-home"></i></a></li>
                     <li class="anchor"><a href="">Registro<i class="fas fa-angle-down"></i></a>
                         <ul>
                             <li class="submenu"><a href="equipos.php">Registro Equipo</a></li>
@@ -103,12 +103,12 @@ $registro = $imeis->consultaImei();
                     <li><a href="info_soporte.php">Info-Soporte</a></li>
                     <li><a href="">Informes<i class="fas fa-angle-down"></i></a>
                         <ul>
-                        <li> <a href="informeEquipo.php">Consulta Equipos</a></li>
-                        <li><a href="infoImpresora.php">Consulta Impresoras</a></li>
-                        <li><a href="informeEnvioM.php">Consulta Envios Soporte</a></li>
-                        <li><a href="InformeEquiposS.php">Consulta Casos Soporte</a></li>
-                        <li><a href="informeAsignado.php">Consulta Equipos Asignados</a></li>
-                    </ul>
+                            <li> <a href="informeEquipo.php">Consulta Equipos</a></li>
+                            <li><a href="infoImpresora.php">Consulta Impresoras</a></li>
+                            <li><a href="informeEnvioM.php">Consulta Envios Soporte</a></li>
+                            <li><a href="InformeEquiposS.php">Consulta Casos Soporte</a></li>
+                            <li><a href="informeAsignado.php">Consulta Equipos Asignados</a></li>
+                        </ul>
                 </ul>
             </nav>
         </div>
@@ -125,15 +125,15 @@ $registro = $imeis->consultaImei();
             <label for="imei">IMEI:</label>
             <select name="imei" id="imei">
                 <option value="" disabled selected>-- Seleccione --</option>
-                <?php foreach($registro as $imei):?>
-                <option value="<?php echo $imei->imei ?>"><?php echo $imei->imei ?></option>
-                <?php endforeach ?>   
+                <?php foreach ($registro as $imei) : ?>
+                    <option value="<?php echo $imei->imei ?>"><?php echo $imei->imei ?></option>
+                <?php endforeach ?>
             </select>
             <label for="tequipo">Tipo Equipo:</label>
             <select name="tequipo" id="tequipo">
-                    <option value="" disabled selected>--Seleccione--</option>
-                    <option value="IMPRESORA">IMPRESORA</option>
-                    <option value="EQUIPO">EQUIPO</option>
+                <option value="" disabled selected>--Seleccione--</option>
+                <option value="IMPRESORA">IMPRESORA</option>
+                <option value="EQUIPO">EQUIPO</option>
             </select>
             <label for="costo">COSTO:</label>
             <input type="text" id="costo" name="costo" placeholder="COSTO MANTENIMIENTO...">

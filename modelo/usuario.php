@@ -1,25 +1,21 @@
 <?php
 
 class usuario{
-    private $id;
+    
     private $nombre;
     private $usuario;
     private $contraseña;
+    private $tipoUsuario;
 
-    public function __construct($id,$nombre, $usuario, $contraseña)
+    public function __construct($nombre, $usuario, $contraseña, $tipoUsuario)
     {
-        $this->id = $id;
+        
         $this->nombre = $nombre;
         $this->usuario = $usuario;
         $this->contraseña = $contraseña;
+        $this->tipoUsuario = $tipoUsuario;
     }
-    public function GetId(){
-        return $this->id;
-    }
-    public function SetId($id){
-        $this->id = $id;
-    }
-
+  
     public function GetNombre(){
         return $this->nombre;
     }
@@ -39,7 +35,12 @@ class usuario{
     public function SetContraseña($contraseña){
         $this->contraseña = $contraseña;
     }
-
+    public function GetTipoUsuario(){
+        return $this->tipoUsuario;
+    } 
+    public function SetTipoUsuario($tipoUsuario){
+        $this->tipoUsuario = $tipoUsuario;
+    }
 
 
 }

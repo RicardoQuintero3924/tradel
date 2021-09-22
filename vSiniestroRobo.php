@@ -31,46 +31,43 @@ if (isset($_POST['enviar'])) {
         $errores .= 'Debe Ingresar un Serial';
     }
 
-    if(!empty($fecha)){
+    if (!empty($fecha)) {
         $fecha = trim($fecha);
         $fecha = filter_var($fecha, FILTER_SANITIZE_STRING);
-    }else{
+    } else {
         $errores .= 'Seleccione la Fecha del Robo';
     }
 
-    if(!empty($responsable)){
+    if (!empty($responsable)) {
         $responsable = trim($responsable);
         $responsable = filter_var($responsable, FILTER_SANITIZE_STRING);
-    }else{
-        $errores.= 'Debe Ingresar un Responsable del Equipo';
+    } else {
+        $errores .= 'Debe Ingresar un Responsable del Equipo';
     }
 
-    if(!empty($ruta)){
+    if (!empty($ruta)) {
         $ruta = trim($ruta);
         $ruta = filter_var($ruta, FILTER_SANITIZE_STRING);
-    }else{
+    } else {
         $errores .= 'Debe ingresar la Ruta.';
     }
-    if(!empty($nroDenuncio)){
+    if (!empty($nroDenuncio)) {
         $nroDenuncio = trim($nroDenuncio);
         $nroDenuncio = filter_var($nroDenuncio, FILTER_SANITIZE_STRING);
-    }else{
-        $errores.= 'Debe Ingresar el numero del denuncio';
+    } else {
+        $errores .= 'Debe Ingresar el numero del denuncio';
     }
 
-    if(!$errores){
+    if (!$errores) {
         require_once 'control/controlSiniestroRobo.php';
         require_once 'modelo/siniestroRobo.php';
         $controlSiniestro = new controlSiniestroRobo();
-        $siniestro = new SiniestroRobo($tipoEquipo, $imei, $serial, $fecha, $responsable, $ruta, $nroDenuncio); 
+        $siniestro = new SiniestroRobo($tipoEquipo, $imei, $serial, $fecha, $responsable, $ruta, $nroDenuncio);
         $controlSiniestro->registroSiniestro($siniestro);
         echo '<script type="text/javascript">alert("Robo Registrado con Exito!")</script>';
-    }else{
+    } else {
         echo '<script type="text/javascript">alert("Por Favor Valide todos los campos!")</script>';
     }
-
-
-
 }
 ?>
 <!DOCTYPE html>
@@ -96,6 +93,7 @@ if (isset($_POST['enviar'])) {
         <div class="menu">
             <nav>
                 <ul>
+                    <li><a href="paginaPrincipal.php"><i class="fas fa-home"></i></a></li>
                     <li class="anchor"><a href="">Registro<i class="fas fa-angle-down"></i></a>
                         <ul>
                             <li class="submenu"><a href="equipos.php">Registro Equipo</a></li>
@@ -120,12 +118,12 @@ if (isset($_POST['enviar'])) {
                     <li><a href="info_soporte.php">Info-Soporte</a></li>
                     <li><a href="">Informes<i class="fas fa-angle-down"></i></a>
                         <ul>
-                        <li> <a href="informeEquipo.php">Consulta Equipos</a></li>
-                        <li><a href="infoImpresora.php">Consulta Impresoras</a></li>
-                        <li><a href="informeEnvioM.php">Consulta Envios Soporte</a></li>
-                        <li><a href="InformeEquiposS.php">Consulta Casos Soporte</a></li>
-                        <li><a href="informeAsignado.php">Consulta Equipos Asignados</a></li>
-                    </ul>
+                            <li> <a href="informeEquipo.php">Consulta Equipos</a></li>
+                            <li><a href="infoImpresora.php">Consulta Impresoras</a></li>
+                            <li><a href="informeEnvioM.php">Consulta Envios Soporte</a></li>
+                            <li><a href="InformeEquiposS.php">Consulta Casos Soporte</a></li>
+                            <li><a href="informeAsignado.php">Consulta Equipos Asignados</a></li>
+                        </ul>
                 </ul>
             </nav>
         </div>

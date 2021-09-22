@@ -1,7 +1,49 @@
 <?php
-require_once 'control/controlEquipo.php';
-$controlEquipo = new controlEquipo();
-$equipos = $controlEquipo->consultaTodos();
+require_once 'control/controlUsuario.php';
+require_once 'modelo/usuario.php';
+$errores = "";
+if (isset($_POST['enviar'])) {
+    $nombre = $_POST['nombre'];
+    $usuario = $_POST['usuario'];
+    $contraseña = $_POST['contraseña'];
+    $tipoUsuario = $_POST['tUsuario'];
+
+    if (!empty($nombre)) {
+        $nombre = trim($nombre);
+        $nombre = filter_var($nombre, FILTER_SANITIZE_STRING);
+    } else {
+        $errores .= "Favor Ingresar su nombre completo";
+    }
+
+    if (!empty($usuario)) {
+        $usuario = trim($usuario);
+        $usuario = filter_var($usuario, FILTER_SANITIZE_STRING);
+    } else {
+        $errores .= "Ingrese su nombre de usuario";
+    }
+
+    if (!empty($contraseña)) {
+        $contraseña = trim($contraseña);
+        $contraseña = filter_var($contraseña, FILTER_SANITIZE_STRING);
+    } else {
+        $errores .= "Ingrese su contraseña";
+    }
+
+    if (!empty($tipoUsuario)) {
+        $tipoUsuario = trim($tipoUsuario);
+    } else {
+        $errores .= "Seleccione un Tipo de Usuario";
+    }
+
+    if (!$errores) {
+        $controlU = new controlUsuario();
+        $modeloU = new usuario($nombre, $usuario, $contraseña, $tipoUsuario);
+        $controlU->insertarUsuario($modeloU);
+        echo '<script type="text/javascript">alert("Usuario Registrado con Exito!")</script>';
+    } else {
+        echo '<script type="text/javascript">alert("Debe Diligenciar Todos los campos!")</script>';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,8 +54,7 @@ $equipos = $controlEquipo->consultaTodos();
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilos.css">
-    <!-- <link rel="stylesheet" href="js/main.js"> -->
-    <title>Zebra Tradel</title>
+    <title>Equipos</title>
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
 
@@ -21,7 +62,7 @@ $equipos = $controlEquipo->consultaTodos();
     <header class="contenedor">
         <div class="barra contenedor">
             <div class="titulo">
-                <h1>control de Equipos</h1>
+                <h1>Registro Usuarios</h1>
             </div>
         </div>
         <div class="menu">
@@ -62,35 +103,38 @@ $equipos = $controlEquipo->consultaTodos();
             </nav>
         </div>
     </header>
-    <div class="informe">
-        <table class="contenedor">
-            <tr class="celda">
-                <th>Tipo Equipo</th>
-                <th>Imei</th>
-                <th>Serial</th>
-                <th>Numero SIM</th>
-                <th>Ciudad</th>
-                <th>Disponible</th>
-            </tr>
-            <?php foreach ($equipos as $equipo) : ?>
-                <tr class="fila">
-                    <td><?= $equipo->t_equipo ?></td>
-                    <td><?= $equipo->imei ?></td>
-                    <td><?= $equipo->serial ?></td>
-                    <td><?= $equipo->nro_sim ?></td>
-                    <td><?= $equipo->ciudad ?></td>
-                    <td><?= $equipo->disponible ? 'SI' : 'NO' ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
-    </div>
+
+
+    <form method="POST" class="contenedor">
+        <fieldset class="contenedor seccion-equipo">
+            <legend>Usuarios</legend>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre...">
+            <label for="usuario">usuario:</label>
+            <input type="text" id="usuario" name="usuario" placeholder="Usuario..">
+            <label for="contraseña">Contraseña:</label>
+            <input type="text" id="contraseña" name="contraseña" placeholder="Contraseña...">
+            <label for="tUsuario">Tipo usuario:</label>
+            <select name="tUsuario" id="tUsuario">
+                <option value="" disabled selected>-- Seleccione --</option>
+                <option value="1">Administrador</option>
+                <option value="0">Usuario</option>
+            </select>
+            <input type="submit" value="enviar" name="enviar" class="boton">
+
+        </fieldset>
+
+        <div class="errores">
+            <pre>
+                <p><? $errores ?></p>
+            </pre>
+        </div>
+    </form>
     <footer class="contenedor">
         <div class="footer">
             <p class="copyright">Todos los Derechos Reservados &copy; </p>
         </div>
     </footer>
-    <script src="jquery-1.12.0.min.js"></script>
-    <script src="js/main.js"></script>
 </body>
 
 </html>

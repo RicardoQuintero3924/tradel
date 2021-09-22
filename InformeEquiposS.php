@@ -27,6 +27,7 @@ $casos = $controlMantenimiento->consultaSoportes();
         <div class="menu">
             <nav>
                 <ul>
+                    <li><a href="paginaPrincipal.php"><i class="fas fa-home"></i></a></li>
                     <li class="anchor"><a href="">Registro<i class="fas fa-angle-down"></i></a>
                         <ul>
                             <li class="submenu"><a href="equipos.php">Registro Equipo</a></li>
@@ -51,12 +52,12 @@ $casos = $controlMantenimiento->consultaSoportes();
                     <li><a href="info_soporte.php">Info-Soporte</a></li>
                     <li><a href="">Informes<i class="fas fa-angle-down"></i></a>
                         <ul>
-                        <li> <a href="informeEquipo.php">Consulta Equipos</a></li>
-                        <li><a href="infoImpresora.php">Consulta Impresoras</a></li>
-                        <li><a href="informeEnvioM.php">Consulta Envios Soporte</a></li>
-                        <li><a href="InformeEquiposS.php">Consulta Casos Soporte</a></li>
-                        <li><a href="informeAsignado.php">Consulta Equipos Asignados</a></li>
-                    </ul>
+                            <li> <a href="informeEquipo.php">Consulta Equipos</a></li>
+                            <li><a href="infoImpresora.php">Consulta Impresoras</a></li>
+                            <li><a href="informeEnvioM.php">Consulta Envios Soporte</a></li>
+                            <li><a href="InformeEquiposS.php">Consulta Casos Soporte</a></li>
+                            <li><a href="informeAsignado.php">Consulta Equipos Asignados</a></li>
+                        </ul>
                 </ul>
             </nav>
         </div>
@@ -68,16 +69,16 @@ $casos = $controlMantenimiento->consultaSoportes();
                 <th>Caso</th>
                 <th>Costo</th>
                 <th>Estado</th>
-                
+
             </tr>
-            <?php foreach ($casos as $caso): ?>
-            <tr class="fila">
-                <td><?= $caso->imei ?></td>
-                <td><?= $caso->caso ?></td>
-                <td><?= $caso->costo ?></td>
-                <td><?= $caso->estado ?></td>
-            </tr>
-            <?php endforeach;?>
+            <?php foreach ($casos as $caso) : ?>
+                <tr class="fila">
+                    <td><?= $caso->imei ?></td>
+                    <td><?= $caso->caso ?></td>
+                    <td><?= $caso->costo ?></td>
+                    <td><?= $caso->estado ?></td>
+                </tr>
+            <?php endforeach; ?>
         </table>
     </div>
     <footer class="contenedor">

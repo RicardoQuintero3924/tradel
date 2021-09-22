@@ -29,13 +29,20 @@ if (isset($_POST['btn_login'])) {
     foreach ($users as $user) {
         
         $password = $user->contraseña;
+        $nombre = $user->nombre;
+        $tipoUsuario = $user->tipoUsuario;
     }
 
     if (($clave === $password)) {
-        header('location:paginaPrincipal.php');
+        if($tipoUsuario == 1){
+            header('location:paginaAdmin.php');
+        }else{
+            header('location:paginaPrincipal.php');
+        }
     } else {
        echo '<script type="text/javascript"> alert("Ingrese Su Contraseña Correcta")</script>';
     }
+    
 }
 
 ?>

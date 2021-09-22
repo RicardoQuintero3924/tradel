@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once 'control/controlEnvioMantenimiento.php';
 $controlEnvio = new ControlEnvioMantenimiento();
 $casos = $controlEnvio->ConsultaTodo();
@@ -28,6 +28,7 @@ $casos = $controlEnvio->ConsultaTodo();
         <div class="menu">
             <nav>
                 <ul>
+                    <li><a href="paginaPrincipal.php"><i class="fas fa-home"></i></a></li>
                     <li class="anchor"><a href="">Registro<i class="fas fa-angle-down"></i></a>
                         <ul>
                             <li class="submenu"><a href="equipos.php">Registro Equipo</a></li>
@@ -52,12 +53,12 @@ $casos = $controlEnvio->ConsultaTodo();
                     <li><a href="info_soporte.php">Info-Soporte</a></li>
                     <li><a href="">Informes<i class="fas fa-angle-down"></i></a>
                         <ul>
-                        <li> <a href="informeEquipo.php">Consulta Equipos</a></li>
-                        <li><a href="infoImpresora.php">Consulta Impresoras</a></li>
-                        <li><a href="informeEnvioM.php">Consulta Envios Soporte</a></li>
-                        <li><a href="InformeEquiposS.php">Consulta Casos Soporte</a></li>
-                        <li><a href="informeAsignado.php">Consulta Equipos Asignados</a></li>
-                    </ul>
+                            <li> <a href="informeEquipo.php">Consulta Equipos</a></li>
+                            <li><a href="infoImpresora.php">Consulta Impresoras</a></li>
+                            <li><a href="informeEnvioM.php">Consulta Envios Soporte</a></li>
+                            <li><a href="InformeEquiposS.php">Consulta Casos Soporte</a></li>
+                            <li><a href="informeAsignado.php">Consulta Equipos Asignados</a></li>
+                        </ul>
                 </ul>
             </nav>
         </div>
@@ -72,16 +73,16 @@ $casos = $controlEnvio->ConsultaTodo();
                 <th>Ciudad</th>
                 <th>fecha Envío</th>
             </tr>
-            <?php foreach ($casos as $caso): ?>
-            <tr class="fila">
-                <td><?= $caso->tipo_equipo ?></td>
-                <td><?= $caso->imei ?></td>
-                <td><?= $caso->serial ?></td>
-                <td><?= $caso->ruta ?></td>
-                <td><?= $caso->sedeE ?></td>
-                <td><?= $caso->fecha?></td>
-            </tr>
-            <?php endforeach;?>
+            <?php foreach ($casos as $caso) : ?>
+                <tr class="fila">
+                    <td><?= $caso->tipo_equipo ?></td>
+                    <td><?= $caso->imei ?></td>
+                    <td><?= $caso->serial ?></td>
+                    <td><?= $caso->ruta ?></td>
+                    <td><?= $caso->sedeE ?></td>
+                    <td><?= $caso->fecha ?></td>
+                </tr>
+            <?php endforeach; ?>
         </table>
     </div>
     <footer class="contenedor">

@@ -27,6 +27,7 @@ $asignacion = $controlAsignación->consultaAsignados();
         <div class="menu">
             <nav>
                 <ul>
+                    <li><a href="paginaPrincipal.php"><i class="fas fa-home"></i></a></li>
                     <li class="anchor"><a href="">Registro<i class="fas fa-angle-down"></i></a>
                         <ul>
                             <li class="submenu"><a href="equipos.php">Registro Equipo</a></li>
@@ -51,12 +52,12 @@ $asignacion = $controlAsignación->consultaAsignados();
                     <li><a href="info_soporte.php">Info-Soporte</a></li>
                     <li><a href="">Informes<i class="fas fa-angle-down"></i></a>
                         <ul>
-                        <li> <a href="informeEquipo.php">Consulta Equipos</a></li>
-                        <li><a href="infoImpresora.php">Consulta Impresoras</a></li>
-                        <li><a href="informeEnvioM.php">Consulta Envios Soporte</a></li>
-                        <li><a href="InformeEquiposS.php">Consulta Casos Soporte</a></li>
-                        <li><a href="informeAsignado.php">Consulta Equipos Asignados</a></li>
-                    </ul>
+                            <li> <a href="informeEquipo.php">Consulta Equipos</a></li>
+                            <li><a href="infoImpresora.php">Consulta Impresoras</a></li>
+                            <li><a href="informeEnvioM.php">Consulta Envios Soporte</a></li>
+                            <li><a href="InformeEquiposS.php">Consulta Casos Soporte</a></li>
+                            <li><a href="informeAsignado.php">Consulta Equipos Asignados</a></li>
+                        </ul>
                 </ul>
             </nav>
         </div>
@@ -72,17 +73,17 @@ $asignacion = $controlAsignación->consultaAsignados();
                 <th>Ruta</th>
                 <th>Activo</th>
             </tr>
-            <?php foreach ($asignacion as $asig): ?>
-            <tr class="fila">
-                <td><a href="comodatoPDF.php?nroComodato=<?= $asig->nroComodato ?>"><?= $asig->nroComodato ?></a></td>
-                <td><?= $asig->imei ?></td>
-                <td><?= $asig->serial ?></td>
-                <td><?= $asig->nombreR ?></td>
-                <td><?= $asig->cedula ?></td>
-                <td><?= $asig->ruta?></td>
-                <td><?= $asig->activo ?  'SI' : 'NO' ?></td>
-            </tr>
-            <?php endforeach;?>
+            <?php foreach ($asignacion as $asig) : ?>
+                <tr class="fila">
+                    <td><a href="comodatoPDF.php?nroComodato=<?= $asig->nroComodato ?>"><?= $asig->nroComodato ?></a></td>
+                    <td><?= $asig->imei ?></td>
+                    <td><?= $asig->serial ?></td>
+                    <td><?= $asig->nombreR ?></td>
+                    <td><?= $asig->cedula ?></td>
+                    <td><?= $asig->ruta ?></td>
+                    <td><?= $asig->activo ?  'SI' : 'NO' ?></td>
+                </tr>
+            <?php endforeach; ?>
         </table>
     </div>
     <footer class="contenedor">

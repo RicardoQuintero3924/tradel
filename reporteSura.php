@@ -1,6 +1,6 @@
 <?php
 $errores = "";
-if(isset($_POST['enviar'])){
+if (isset($_POST['enviar'])) {
     $tipo = $_POST['tipo'];
     $reporte = $_POST['nReporte'];
     $cobrado = $_POST['cobro'];
@@ -8,60 +8,58 @@ if(isset($_POST['enviar'])){
     $denuncia = $_POST['denuncia'];
     $observacion = $_POST['observaciones'];
 
-    if(!empty($tipo)){
+    if (!empty($tipo)) {
         $tipo = trim($tipo);
-    }else{
+    } else {
         $errores .= 'Debe Seleccionar el Tipo';
     }
 
-    if(!empty($reporte)){
+    if (!empty($reporte)) {
         $reporte = trim($reporte);
         $reporte = filter_var($reporte, FILTER_SANITIZE_STRING);
-    }else{
+    } else {
         $errores .= 'Debe Ingresar el numero del reporte';
     }
 
-    if(!empty($cobrado)){
+    if (!empty($cobrado)) {
         $cobrado = trim($cobrado);
         $cobrado = filter_var($cobrado, FILTER_SANITIZE_STRING);
-    }else{
+    } else {
         $errores .= 'Debe Ingresar un cobrodo a';
     }
 
-    if(!empty($pagado)){
+    if (!empty($pagado)) {
         $pagado = trim($pagado);
         $pagado = filter_var($pagado, FILTER_SANITIZE_STRING);
-    }else{
+    } else {
         $errores .= 'Debe Ingresar un valor';
     }
 
-    if(!empty($denuncia)){
+    if (!empty($denuncia)) {
         $denuncia = trim($denuncia);
         $denuncia = filter_var($denuncia, FILTER_SANITIZE_STRING);
-    }else{
+    } else {
         $errores .= 'Debe Ingresar la Denuncia';
     }
 
-    if(!empty($observacion)){
+    if (!empty($observacion)) {
         $observacion = trim($observacion);
         $observacion = filter_var($observacion, FILTER_SANITIZE_STRING);
-    }else{
+    } else {
         $errores .= 'observacion';
     }
 
-    if(!$errores){
+    if (!$errores) {
         require_once 'modelo/mReporteSura.php';
         require_once 'control/controlReporteS.php';
 
         $registro = new ReporteSura($tipo, $reporte, $cobrado, $pagado, $denuncia, $observacion);
         $controlReporte = new controlReporte();
         $controlReporte->RegistroReporte($registro);
-        echo '<script type="text/javascript">alert("Reporte Registrado con Exito!")</script>';        
-    }else{
+        echo '<script type="text/javascript">alert("Reporte Registrado con Exito!")</script>';
+    } else {
         echo '<script type="text/javascript">alert("Debe Diligenciar Todos los campos!")</script>';
     }
-    
-    
 }
 
 
@@ -90,6 +88,7 @@ if(isset($_POST['enviar'])){
         <div class="menu">
             <nav>
                 <ul>
+                    <li><a href="paginaPrincipal.php"><i class="fas fa-home"></i></a></li>
                     <li class="anchor"><a href="">Registro<i class="fas fa-angle-down"></i></a>
                         <ul>
                             <li class="submenu"><a href="equipos.php">Registro Equipo</a></li>
@@ -114,12 +113,12 @@ if(isset($_POST['enviar'])){
                     <li><a href="info_soporte.php">Info-Soporte</a></li>
                     <li><a href="">Informes<i class="fas fa-angle-down"></i></a>
                         <ul>
-                        <li> <a href="informeEquipo.php">Consulta Equipos</a></li>
-                        <li><a href="infoImpresora.php">Consulta Impresoras</a></li>
-                        <li><a href="informeEnvioM.php">Consulta Envios Soporte</a></li>
-                        <li><a href="InformeEquiposS.php">Consulta Casos Soporte</a></li>
-                        <li><a href="informeAsignado.php">Consulta Equipos Asignados</a></li>
-                    </ul>
+                            <li> <a href="informeEquipo.php">Consulta Equipos</a></li>
+                            <li><a href="infoImpresora.php">Consulta Impresoras</a></li>
+                            <li><a href="informeEnvioM.php">Consulta Envios Soporte</a></li>
+                            <li><a href="InformeEquiposS.php">Consulta Casos Soporte</a></li>
+                            <li><a href="informeAsignado.php">Consulta Equipos Asignados</a></li>
+                        </ul>
                 </ul>
             </nav>
         </div>
@@ -141,9 +140,9 @@ if(isset($_POST['enviar'])){
                 <legend>Reporte Aseguradora</legend>
                 <label for="tipo">Tipo Reporte</label>
                 <select name="tipo" id="tipo">
-                <option value="" disabled selected>--seleccione--</option>
-                <option value="daño">Daño</option>
-                <option value="robo">Robo</option>
+                    <option value="" disabled selected>--seleccione--</option>
+                    <option value="daño">Daño</option>
+                    <option value="robo">Robo</option>
                 </select>
                 <label for="nReporte">Numero Reporte SURA:</label>
                 <input type="text" id="nReporte" value="" name="nReporte" placeholder="Numero Reporte SURA...">
